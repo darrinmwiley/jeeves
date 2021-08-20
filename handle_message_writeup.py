@@ -47,7 +47,7 @@ async def handle_message_writeup(message, client):
             prob = open(sol[4], "r")
             file.write(prob.read()+"\n\n")
     file.close();
-    sendfile = discord.File(cname+".txt")
+    sendfile = discord.File(cname+".txt", "SPOILER_"+cname+".txt")
     os.remove(cname+".txt")
     await message.channel.send(file = sendfile)
     await response.delete()
