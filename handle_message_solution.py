@@ -16,5 +16,5 @@ async def handle_message_solution(message, client):
     if sol == None:
         await send_message(message.channel, tag+" is unsolved")
         return None
-    file = discord.File(sol[3])
+    file = discord.File(sol[3], "SPOILER_"+sol[3])
     await message.channel.send(file = file)
