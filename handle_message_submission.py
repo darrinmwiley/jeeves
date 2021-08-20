@@ -13,6 +13,8 @@ from discord_utils import send_message, make_progress, edit_message, get_emoji
 async def handle_message_submission(message, client):
     attachment = message.attachments[0]
     fname = attachment.filename
+    if fname.startswith("SPOILER_"):
+        fname = fname[8:]
 
     with open(fname, 'wb') as f:
         f.write(requests.get(attachment.url).content)
