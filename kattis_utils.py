@@ -76,8 +76,7 @@ def get_config():
     if os.path.exists(_DEFAULT_CONFIG):
         cfg.read(_DEFAULT_CONFIG)
 
-    if not cfg.read([os.path.join(os.getenv('HOME'), '.kattisrc'),
-                     os.path.join(os.path.dirname(sys.argv[0]), '.kattisrc')]):
+    if not cfg.read('.kattisrc'):
         raise ConfigError('''\
 I failed to read in a config file from your home directory or from the
 same directory as this script. To download a .kattisrc file please visit
@@ -327,13 +326,14 @@ ERROR: No language specified, and I failed to guess language from filename exten
     return submission_id+" "+problem
 
 def check_status(problemId):
-    driver = webdriver.PhantomJS()
+    #driver = webdriver.PhantomJS()
+    driver = webdriver.Chrome()
     driver.get('http://open.kattis.com/login/email?')
     username = driver.find_element_by_name("user")
     username.send_keys(KATTIS_USER)
     password = driver.find_element_by_name("password")
     password.send_keys(KATTIS_PASS)
-    submit = driver.find_element_by_name("submit")
+    submit = driver.find_element_by_xpath("//input[@type='submit']")
     submit.click()
 
     while True:

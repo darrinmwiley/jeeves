@@ -9,15 +9,16 @@ HOST = os.getenv('DB_HOST')
 USER = os.getenv('DB_USER')
 PASSWD = os.getenv('DB_PASSWD')
 DATABASE = os.getenv('DB_DATABASE')
-
-db = mysql.connector.connect(
-  host=HOST,
-  user=USER,
-  passwd=PASSWD,
-  database=DATABASE
-)
-
-cursor = db.cursor(buffered=True)
+NO_DB = os.getenv('NO_DB')
+if(NO_DB != 'TRUE'):
+    print(NO_DB)
+    db = mysql.connector.connect(
+        host=HOST,
+        user=USER,
+        passwd=PASSWD,
+        database=DATABASE
+    )
+    cursor = db.cursor(buffered=True)
 
 def insert_solution(kattis_id, prob_id, user, sol_path,write_up_path, parsed):
     add = "insert into KattisSolution VALUES(0, "+str(kattis_id)+", "+str(user[0])+", \""+sol_path+"\", \""+write_up_path+"\", current_timestamp())"

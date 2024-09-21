@@ -1,0 +1,44 @@
+[INFO  - 2024-09-21T06:36:31.244Z] GhostDriver - Main - running on port 51968
+[INFO  - 2024-09-21T06:36:32.062Z] Session [d70698b0-77e3-11ef-a0a0-d71e1e333b74] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2024-09-21T06:36:32.062Z] Session [d70698b0-77e3-11ef-a0a0-d71e1e333b74] - page.customHeaders:  - {}
+[INFO  - 2024-09-21T06:36:32.062Z] Session [d70698b0-77e3-11ef-a0a0-d71e1e333b74] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2024-09-21T06:36:32.062Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: d70698b0-77e3-11ef-a0a0-d71e1e333b74
+[ERROR - 2024-09-21T06:36:35.606Z] Session [d70698b0-77e3-11ef-a0a0-d71e1e333b74] - page.onError - msg: ReferenceError: Can't find variable: WeakMap
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2024-09-21T06:36:35.606Z] Session [d70698b0-77e3-11ef-a0a0-d71e1e333b74] - page.onError - stack:
+  (anonymous function) (https://browser.sentry-cdn.com/7.119.0/bundle.tracing.es5.min.js:2)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2024-09-21T06:36:36.344Z] Session [d70698b0-77e3-11ef-a0a0-d71e1e333b74] - page.onError - msg: ReferenceError: Can't find variable: Set
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2024-09-21T06:36:36.344Z] Session [d70698b0-77e3-11ef-a0a0-d71e1e333b74] - page.onError - stack:
+  showNewItems (https://1v5nt68l4ppj.statuspage.io/embed/frame:189)
+  init (https://1v5nt68l4ppj.statuspage.io/embed/frame:174)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2024-09-21T06:36:36.345Z] Session [d70698b0-77e3-11ef-a0a0-d71e1e333b74] - page.onError - msg: TypeError: undefined is not a constructor (evaluating 's.getEntriesByType(r)')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2024-09-21T06:36:36.345Z] Session [d70698b0-77e3-11ef-a0a0-d71e1e333b74] - page.onError - stack:
+  I (https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015:1)
+  (anonymous function) (https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015:1)
+  P (https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015:1)
+  (anonymous function) (https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2024-09-21T06:36:36.346Z] Session [d70698b0-77e3-11ef-a0a0-d71e1e333b74] - page.onError - msg: TypeError: undefined is not a constructor (evaluating 's.getEntriesByType(r)')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2024-09-21T06:36:36.346Z] Session [d70698b0-77e3-11ef-a0a0-d71e1e333b74] - page.onError - stack:
+  I (https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015:1)
+  (anonymous function) (https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015:1)
+  P (https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015:1)
+  R (https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2024-09-21T06:36:36.371Z] RouterReqHand - _handle.error - {"line":264,"sourceURL":"phantomjs://code/webelement_request_handler.js","stack":"_postValueCommand@phantomjs://code/webelement_request_handler.js:264:52\n_handle@phantomjs://code/webelement_request_handler.js:72:30\n_reroute@phantomjs://code/request_handler.js:61:20\n_handle@phantomjs://code/session_request_handler.js:120:42\n_reroute@phantomjs://code/request_handler.js:61:20\n_handle@phantomjs://code/router_request_handler.js:78:46"}
+
+  phantomjs://platform/console++.js:263 in error
+[INFO  - 2024-09-21T06:41:31.347Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW

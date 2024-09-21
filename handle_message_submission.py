@@ -3,7 +3,7 @@ import discord
 import requests
 from shutil import copyfile
 
-from db_utils import get_kattis_problem, get_solution, get_user_from_author, insert_solution
+#from db_utils import get_kattis_problem, get_solution, get_user_from_author, insert_solution
 from kattis_utils import check_status, submit_helper
 from scan import scan
 from discord_utils import send_message, make_progress, edit_message, get_emoji
@@ -37,16 +37,16 @@ async def handle_message_submission(message, client):
         post_status = check_status(split[0])
         status = post_status
         if status == "Accepted":
-            user = get_user_from_author(message.author)
-            post_status = on_accepted(f, fname, user)
+            #user = get_user_from_author(message.author)
+            post_status = on_accepted(f, fname, "poopoostinky")#user)
         await edit_message(response, get_emoji(status)+" "+post_status)
     os.remove(fname)
 
 def verify_annotation(fname):
     prefix = fname.split('.')[0]
-    solved = get_solution(prefix)
-    if solved != None:
-        return "this problem is already solved"
+    #solved = get_solution(prefix)
+    #if solved != None:
+    #    return "this problem is already solved"
     annotation = scan(fname)
     if len(annotation) == 0:
         return "denied, annotation not formatted correctly or does not exist"
@@ -65,6 +65,7 @@ def verify_annotation(fname):
 
 #return response string
 def on_accepted(file, fname, user):
+    return "poopoostinky"
     prefix = fname.split('.')[0]
     annotation = scan(fname)
     parsed = parse_annotation(annotation)
