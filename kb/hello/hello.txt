@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/hello
+TAGS: easy
+EXPLANATION:
+just print hello world

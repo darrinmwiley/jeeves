@@ -3,8 +3,9 @@ import os
 #from scrape import scrape_single_problem
 
 # Connect to SQLite database
-db_path = os.getenv('DB_PATH', 'my_database.db')
-db = sqlite3.connect(db_path)
+#db_path = os.getenv('DB_PATH', 'my_database.db')
+#print(db_path)
+db = sqlite3.connect('my_database.db')
 cursor = db.cursor()
 
 # Function to initialize the database schema

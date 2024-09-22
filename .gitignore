@@ -1,3 +1,7 @@
 
 .kattisrc
 .env
+__pycache__/db_utils.cpython-312.pyc
+__pycache__/handle_message.cpython-312.pyc
+__pycache__/kattis_utils.cpython-312.pyc
+create_contest.py

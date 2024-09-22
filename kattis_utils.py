@@ -12,8 +12,10 @@ from db_utils import get_kattis_problem, get_solution, get_user_from_author, ins
 import requests
 import requests.exceptions
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from db_utils import insert_solution
+from selenium.webdriver.chrome.options import Options
 # Python 2/3 compatibility
 if sys.version_info[0] >= 3:
     import configparser
@@ -331,30 +333,42 @@ ERROR: No language specified, and I failed to guess language from filename exten
     return submission_id+" "+problem
 
 def check_status(problemId):
-    driver = webdriver.Chrome()
-    
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # Enable headless mode
+    chrome_options.add_argument("--no-sandbox")  # Required for certain environments
+    chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
+    chrome_options.add_argument("--remote-debugging-port=9222")  # Ensure DevTools port is available
+    chrome_options.add_argument("--disable-gpu")  # Disable GPU for headless environments
+    chrome_options.add_argument("--disable-software-rasterizer")
+    chrome_options.add_argument("--ignore-certificate-errors")  # Ignore SSL certificate errors
+
+    # Path to chromedriver if it's not on PATH
+    driver = webdriver.Chrome(service = Service(executable_path="/usr/bin/chromedriver"), options=chrome_options)
+
     # Open the Kattis login page
     driver.get('http://open.kattis.com/login/email?')
-    
+
     # Find the username and password fields and enter the login credentials
     username = driver.find_element(By.NAME, "user")
     username.send_keys(KATTIS_USER)
     password = driver.find_element(By.NAME, "password")
     password.send_keys(KATTIS_PASS)
-    
+
     # Submit the login form
     submit = driver.find_element(By.XPATH, "//input[@type='submit']")
     submit.click()
 
     # Poll for the problem status
     while True:
+        print("polling url")
         url = "http://open.kattis.com/submissions/" + str(problemId)
         driver.get(url)
-        
+
         # Get the page text and status
         page_text = driver.find_element(By.TAG_NAME, "body").text
+        print(page_text)
         status = driver.find_element(By.CLASS_NAME, "status").text
-        
+
         # Check if the status is final
         final = status_final(status)
         if final:
@@ -416,15 +430,15 @@ def get_all_submission_ids():
                 # Print the submission ID
                 submission_id = row.get_attribute("data-submission-id")
                 submission_ids.append(submission_id)
-    
+
     for sub_id in submission_ids:
         driver.get("https://open.kattis.com/submissions/"+sub_id)
         #Locate the href in the file source content
         file_source = driver.find_element(By.CSS_SELECTOR, ".file_source-content-file")
-        
+
         # Find the anchor tag containing the download link
         download_link = file_source.find_element(By.TAG_NAME, "a").get_attribute("href")
-        
+
         driver.get(download_link)
 
     while(True):
@@ -433,7 +447,7 @@ def get_all_submission_ids():
 def repopulate_knowledge_base():
     # Path to the old directory containing the solutions
     old_directory = "./kb/old"
-    
+
     # Maintain a map of problems that have been added to the knowledge base by tag
     added_tags = set()
 
@@ -441,12 +455,12 @@ def repopulate_knowledge_base():
     for fname in os.listdir(old_directory):
         print(fname)
         # Check if the file is a supported solution file
-        if fname.endswith(".cpp") or fname.endswith(".py") or fname.endswith(".java"):  
+        if fname.endswith(".cpp") or fname.endswith(".py") or fname.endswith(".java"):
             # Remove any trailing numbers in parentheses (e.g., "(1)", "(2)") from the filename
             cleaned_fname = re.sub(r' +\(\d+\)', '', fname).strip()
             print("name", cleaned_fname)
             file_path = os.path.join(old_directory, cleaned_fname)
-            
+
             # Verify the annotation for the solution file
             annotation_issues = verify_annotation(file_path)
             if annotation_issues is None:
@@ -514,7 +528,7 @@ def verify_annotation(fname):
         return "Denied: Error reading explanation."
 
     return None
-    
+
 def parse_annotation(annotation):
     url = annotation[0][12:].strip()
     taglist = annotation[1][5:].strip().split(",")
