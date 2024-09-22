@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/lostmap
+TAGS: union find, mst
+EXPLANATION:
+Creating an MST will guarantee a correct recreation of the map.
+For any edge that connects two nodes, it's cost will be less than any larger path that it is a part of.
+Hence the MST algorithm will pick it up first, correclty recreating the map.

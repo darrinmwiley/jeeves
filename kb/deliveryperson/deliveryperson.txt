@@ -1,0 +1,22 @@
+PROBLEM URL: open.kattis.com/problems/deliveryperson
+TAGS: dijkstra, dp
+EXPLANATION:
+your position is completely encoded by (X,Y,Facing).
+
+max distance between any two successive deliveries is 10 in both x and y, 
+hence there are (4)^2(10*2+1)^2 distinct trips between two deliveries
+(4 ways to begin your trip facing)(10*2+1 total delta x)*(10*2+1 total delta y)*(4 ways to end your trip facing)
+									^ you can go backwards up to 10, stay still, or go forwards up to 10
+									
+it is also possible that a route could go just past the delivery zone in order to make 3 turns in a row, 
+in the case where one turn is much more expensive than the other. Hence relevant positions are padded
+by one in each direction, making the number of relevant positions (4)^2(10*2+3)^2.
+
+We can use dijkstra to calculate the cost of every trip of size (deltax, deltay) starting facing direction F and ending facing direction F`
+
+Next we will use dp to calculate the overall answer. 
+
+dp[i][j] = the minimum cost of delivering the first i packages ending facing direction j
+
+dp[i][j] = min (dp[i-1][j`] + cost of going from location i-1 facing j` to location i facing j)
+

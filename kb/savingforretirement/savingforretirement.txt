@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/savingforretirement
+TAGS: brute force, math
+EXPLANATION:
+try every possible age, use math to figure out how much money each will have after a given amount of time.

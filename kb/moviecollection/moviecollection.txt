@@ -1,0 +1,8 @@
+PROBLEM URL: https://open.kattis.com/problems/moviecollection
+TAGS: Segment Tree
+EXPLANATION:
+Use a segtree to keep track of movies in the stack.
+Whenever a movie is located and removed, that index in the segtree
+is set to 0 and a 1 is added to the end of the segtree.
+Can perform each locate in log(n) time.
+Keeps track of locations of movies in an array with index.

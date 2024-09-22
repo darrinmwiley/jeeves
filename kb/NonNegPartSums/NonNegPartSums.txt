@@ -1,0 +1,13 @@
+PROBLEM URL: open.kattis.com/problems/nonnegpartsums
+TAGS: dp, implementation
+EXPLANATION:
+- Let pref[i] be sum of the first (i + 1) number
+- Let f(k) be a cyclic shift consists of k shifts (k < n)
+=> For f(k) to meets the requirements, the following conditions must be met
+    If (k == 0):
+        min(pref[0], pref[1], pref[2],..., pref[n-1]) >= 0
+    Else:
+        + min(pref[k], pref[k+1],..., pref[n-1]) - pref[k-1] >= 0
+        + sum(a[k], a[k+1],..., a[n-1]) + min(pref[0], pref[1],... pref[k-1]) >= 0
+
+- We can use a prefix-sum-like (a type of dp) to determine if f(k) meets the requirement for a certain k (refer to below code for more details) 

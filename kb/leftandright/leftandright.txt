@@ -1,0 +1,13 @@
+PROBLEM URL: https://open.kattis.com/problems/leftandright
+TAGS: implementation
+EXPLANATION:
+- Since the robot has to move to the right to reach the first house => we can add an 'R' at the front of the string
+- Create an array that will store the result
+- Split the string into substrings starting with an R, followed by (x) amount of L (x >= 0)
+- e.g: R (x = 0), RLL (x = 2), RLLLLLL (x = 6)
+- Create a variable called curr => set it to 0
+- For each substring resulted from previous step, let the current substring be s[i..j] (0-indexed, i = index in original string of first letter in substring):
+  + result[i] = curr + j-1+1
+  + curr = result[i] 
+- For each value in result array, 
+  + If result[i] is not initialized, result[i] = result[i-1] - 1

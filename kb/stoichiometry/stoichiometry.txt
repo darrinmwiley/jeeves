@@ -1,0 +1,7 @@
+PROBLEM URL: https://open.kattis.com/problems/stoichiometry
+TAGS: Matrices, Factorization
+EXPLANATION:
+The combination of molecules so that both sides are equal is the same as finding the null space of a matrix in which the elements are rows and molecules are columns and right hand molecules are negative
+Turning the input into a matrix can be done by taking string inputs and assigning each element a row with a map
+Reducing the matrix can be done for each row by multiplying a row to the lcm of the pivot row and subtracting each for each element times lcm/pivot
+The nullspace vector can be found by moving up the matrix and finding the next value starting with m=1 (finding a multiple can similarly be done by gcd/current element and multipying the rest by gcd/sum of found*row)

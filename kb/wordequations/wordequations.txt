@@ -1,0 +1,13 @@
+PROBLEM URL: open.kattis.com/problems/wordequations
+TAGS: dp, greedy, dfs, dag
+EXPLANATION:
+it will never hurt us to take each letter at the earliest possible time. we can be greedy in that regard.
+
+let dp[i][j] = the max number of letters that word i can cover, starting from position j
+
+if word i is a leaf, we can naively calculate this
+
+if word i is not a leaf, we will use as many letters as possible from the left child and then as many as possible from the right child, referencing dp in both cases.
+
+make sure to solve subproblems in topological order. It is easy to do this using DFS.
+

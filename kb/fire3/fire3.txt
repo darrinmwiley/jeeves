@@ -1,0 +1,9 @@
+PROBLEM URL: https://open.kattis.com/problems/fire3
+TAGS: bfs, queue
+EXPLANATION:
+Have a grid (fireVisited) where fireVisited[row][col] is the min time for any fire to reach (row, col)
+Do this by initially setting it to a large number then doing multiple BFSes for each fire.
+Then do a BFS for John. If he takes more time to reach a square than the fire does (fireVisited), don't add that square to the queue. Otherwise, add it to the queue and set the min # of steps required to reach that square (locs[r][c]).
+  In the BFS when you reach a square on the border of the grid, min your answer with the steps required to reach that border.
+If you never reached a border in John's BFS, it is IMPOSSIBLE.
+Otherwise print the min # of steps.

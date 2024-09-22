@@ -1,0 +1,40 @@
+PROBLEM URL: open.kattis.com/problems/qcqc
+TAGS: interactive, dsu, union-find, randomized, SALTY
+EXPLANATION:
+first, find one good machine. We can do this in 6 queries by maintaining by eliminating half
+of all machines over and over again and maintaining the strict majority invariant.
+
+We do this by pairing machines and letting them test each other. 
+
+If both machines say each
+other are good, we know they are either both good or both bad. In this case, discard one 
+and keep one. Since there are more good than bad to begin with, halving both won't hurt
+
+If at least one machine calls the other bad, either one is bad or both. In this case, we discard both.
+Since we're getting rid of at least as many bad as good here, this is fine as well.
+
+Some care must be taken with an odd number of candidates. If there are odd candidates and an odd number
+of pairs call each other good, we want to discard. Otherwise we want to keep. An helped me figure this out,
+I'm gonna leave why as an exercise to the reader.
+
+While narrowing down candidates for a good machine, also randomly pair eliminated machines and have them
+test each other. due to the majority constraint, there is a probability of at least 1/4 that two machines will
+call each other good. Any time this happens, we know their results are identical.
+
+maintain a unionfind data structure keeping track of connected components (which machines are the same).
+
+It will take at most 6 queries to find one good computer, for smaller cases it's less and we have more
+breathing room to compensate for the fewer number of CC's
+
+After finding a good machine, follow the following iterative process:
+
+1) use the connected components from the union find to propagate all information .
+we want to mark as many good and bad machines as possible. The more bad machines we have
+marked, the less work we have remaining. The more good machines we have marked, the stronger
+we can make our queries, as each can test a connected component.
+2) for every connected component that we don't know the answer to, use a good machine (if one is available)
+in the next query to test it. (I tested in order of greatest CC size to least, it's intuitive why this is a good idea)
+3) propagate new information and repeat
+
+once all machines are known, output the result obvi
+

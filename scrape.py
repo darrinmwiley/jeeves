@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 import requests
-import mysql.connector
-import sys, traceback
+import sqlite3
+import sys
+import traceback
 import os
 
 headers = {
@@ -16,114 +17,134 @@ headers = {
 kattis_problem_source = "1"
 kattis_problem_url_prefix = "open.kattis.com/problems/"
 
+# Load environment variables
 load_dotenv()
-HOST = os.getenv('DB_HOST')
-USER = os.getenv('DB_USER')
-PASSWD = os.getenv('DB_PASSWD')
-DATABASE = os.getenv('DB_DATABASE')
+DB_PATH = os.getenv('DB_PATH', 'my_database.db')
 
-db = mysql.connector.connect(
-  host=HOST,
-  user=USER,
-  passwd=PASSWD,
-  database=DATABASE
-)
+# Connect to SQLite database
+db = sqlite3.connect(DB_PATH)
+cursor = db.cursor()
 
-cursor = db.cursor(buffered=True)
-
-#TODO ADD COLUMN FOR HIGH AND LOW DIFFICULTY VALUE AND FLAG FOR VARIABLE DIFFICULTY
-
+# TODO: Add column for high and low difficulty value and flag for variable difficulty
 def scrape_single_problem(TAG):
-    url = "https://open.kattis.com/problems/"+TAG
-    req = requests.get(url, headers)
+    url = "https://open.kattis.com/problems/" + TAG
+    req = requests.get(url, headers=headers)
     soup = BeautifulSoup(req.content, 'html.parser')
 
     try:
-        headline = soup.find_all("div", {"class":"page-headline"})[0]
+        # Handle 404 page
+        headline = soup.find_all("div", {"class": "page-headline"})[0]
         fl = headline.find_all("div", {"class": "fl"})[0]
         h1 = fl.find_all("h1")[0]
         if h1.get_text().startswith("404"):
             return None
     except:
-        wrapper = soup.find_all("div", {"class":"headline-wrapper"})[0]
+        # Scraping logic for problem metadata
+        wrapper = soup.find_all("div", {"class": "headline-wrapper"})[0]
         name = wrapper.find_all("h1")[0].get_text()
 
         first_sidebar = soup.find_all("div", {"class": "problem-sidebar"})[0]
-        sidebar_info_all = first_sidebar.find_all("div", {"class":"sidebar-info"})
+        sidebar_info_all = first_sidebar.find_all("div", {"class": "sidebar-info"})
         sidebar_info = sidebar_info_all[len(sidebar_info_all)-1]
         difficulty_wrapper = sidebar_info.find_all("p")
         diff = difficulty_wrapper[3].find_all("span")[0].get_text()
-        find_query = "select * from Problem where problemURL = \""+kattis_problem_url_prefix+TAG+"\""
-        cursor.execute(find_query)
+
+        find_query = "SELECT * FROM Problem WHERE problemURL = ?"
+        cursor.execute(find_query, (kattis_problem_url_prefix + TAG,))
         results = cursor.fetchall()
+
         x = diff.split("-")[0].strip()
+
         if len(results) == 0:
-            query = "insert into Problem Values(0, "+kattis_problem_source+", \""+kattis_problem_url_prefix+TAG+"\", \""+name+"\")"
+            query = "INSERT INTO Problem (sourceId, problemURL, problemName) VALUES (?, ?, ?)"
             try:
-                cursor.execute(query)
-            except:
+                cursor.execute(query, (kattis_problem_source, kattis_problem_url_prefix + TAG, name))
+            except sqlite3.IntegrityError:
                 pass
-            #TODO DATABASE REFACTOR
-            query = "select id from Problem where problemURL = \""+kattis_problem_url_prefix+TAG+"\""
-            cursor.execute(query)
+
+            query = "SELECT id FROM Problem WHERE problemURL = ?"
+            cursor.execute(query, (kattis_problem_url_prefix + TAG,))
             result = cursor.fetchone()[0]
-            query = "insert into KattisProblem Values(0, "+str(result)+", "+x+", \""+TAG+"\")"
-            cursor.execute(query)
-        get_pid = "select id from KattisProblem where tag = \""+TAG+"\""
-        cursor.execute(get_pid)
+
+            query = "INSERT INTO KattisProblem (problemId, difficulty, tag) VALUES (?, ?, ?)"
+            cursor.execute(query, (result, x, TAG))
+
+        get_pid = "SELECT id FROM KattisProblem WHERE tag = ?"
+        cursor.execute(get_pid, (TAG,))
         pid = cursor.fetchone()[0]
-        update = "update KattisProblem set difficulty = "+x+" where id = "+str(pid)
-        cursor.execute(update)
+
+        update = "UPDATE KattisProblem SET difficulty = ? WHERE id = ?"
+        cursor.execute(update, (x, pid))
+
         db.commit()
-        query = "select id, problemId from KattisProblem where tag = \""+TAG+"\""
-        cursor.execute(query)
+
+        query = "SELECT id, problemId FROM KattisProblem WHERE tag = ?"
+        cursor.execute(query, (TAG,))
         return cursor.fetchone()
 
-
 def scrape():
+    added = 0
     try:
         for i in range(100000):
-            print("page "+str(i))
-            url = "https://open.kattis.com/problems?page="+str(i)
-            req = requests.get(url, headers)
+            print(f"Page {i}")
+            url = f"https://open.kattis.com/problems?page={i}"
+            req = requests.get(url, headers=headers)
             soup = BeautifulSoup(req.content, 'html.parser')
 
-            tables = soup.find_all("tbody")
+            section = soup.find("section", {"data-cy": "problems-table"})
+            tables = section.find_all("tbody")
+
+            if len(tables) == 0:
+                break
 
             rows = tables[0].find_all("tr")
-
-            if len(rows) == 0:
-                break
 
             for row in rows:
                 data = row.find_all("td")
                 a = data[0].find_all("a")[0]
-                href = a['href'][10:]
+                href = a['href'][10:]  # Get problem tag from URL
                 name = a.get_text()
-                diff = data[8].get_text()
-                query = "insert into Problem Values(0, "+kattis_problem_source+", \""+kattis_problem_url_prefix+href+"\", \""+name+"\")"
+                diff = data[6].find("span").get_text()
+
+                query = "INSERT INTO Problem (sourceId, problemURL, problemName) VALUES (?, ?, ?)"
                 try:
-                    cursor.execute(query)
-                except:
+                    cursor.execute(query, (kattis_problem_source, kattis_problem_url_prefix + href, name))
+                except sqlite3.IntegrityError:
+                    #print("integrity error")
                     pass
-                x = diff.split("-")[0].strip()
-                query = "select id from Problem where problemURL = \""+kattis_problem_url_prefix+href+"\""
-                cursor.execute(query)
+
+                spl = diff.split("-")
+                x = spl[len(spl) - 1]
+
+                print(name, spl, x)
+
+                query = "SELECT id FROM Problem WHERE problemURL = ?"
+                cursor.execute(query, (kattis_problem_url_prefix + href,))
                 result = cursor.fetchone()[0]
-                query = "insert into KattisProblem Values(0, "+str(result)+", "+x+", \""+href+"\")"
-                added = 0
+
+                query = "INSERT INTO KattisProblem (problemId, difficulty, tag) VALUES (?, ?, ?)"
                 try:
-                    cursor.execute(query)
-                    added+=1
-                except:
-                    get_pid = "select id from KattisProblem where tag = \""+str(href)+"\""
-                    cursor.execute(get_pid)
+                    cursor.execute(query, (result, x, href))
+                    added += 1
+                except sqlite3.IntegrityError:
+                    get_pid = "SELECT id FROM KattisProblem WHERE tag = ?"
+                    cursor.execute(get_pid, (href,))
                     pid = cursor.fetchone()[0]
-                    update = "update KattisProblem set difficulty = "+x+" where id = "+str(pid)
-                    print(update)
-                    cursor.execute(update)
-        db.commit()
+                    update = "UPDATE KattisProblem SET difficulty = ? WHERE id = ?"
+                    cursor.execute(update, (x, pid))
+
+            # Commit after each page
+            db.commit()
+
         return added
-    except:
+
+    except Exception as e:
         traceback.print_exc()
         return -1
+
+# Close the database connection when done
+def close_db():
+    cursor.close()
+    db.close()
+
+#scrape()

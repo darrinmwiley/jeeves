@@ -1,0 +1,9 @@
+PROBLEM URL: open.kattis.com/problems/horrorfilmnight
+TAGS: dp, state flag
+EXPLANATION:
+dp[D][S] = the maximum number of movies that can be watched by day D in state S
+
+State can be one of the following: 
+0: someone must like the next movie watched
+1: Emma must like the next movie watched
+2: Marcos must like the next movie watched

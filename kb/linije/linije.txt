@@ -1,0 +1,27 @@
+PROBLEM URL: open.kattis.com/problems/linije
+TAGS: flow, matching
+EXPLANATION:
+We can view this problem as a bipartite graph where vertical lines are on one side, and horizontal lines on the other.
+
+We will connect two nodes if one line can be played directly after another. 
+This is the case if two lines are of opposite types and share a point
+
+Drawing a line is equivalent to removing a node from the graph, and the first person to not be able to remove another node loses.
+
+If there is a perfect matching between nodes, Slavko can always remove match(x) right after Mirko removes X, which would guarantee Slavko taking the last node.
+
+Otherwise, Mirko can start from an unmatched node. 
+The node Slavko removes after Mirko is guaranteed to have a match. If it didn't, the node Mirko removed would be able to match with it.
+If Mirko starts from an unmatched node, he can then always remove the match of any node Slavko removes afterwards. 
+Hence Mirko will always have a move left and Slavko must lose
+
+This shows that an optimal strategy exists for Slavko when a perfect matching exists, and an optimal strategy exists for Mirko otherwise.
+
+We can implement the matching algorithm with max flow, as the runtime is (V+E)F, where F is the total flow. 
+Because there are at most 500 nodes on each side of the bipartite graph, the max flow is at most 500. 
+
+Hence complexity =~ (10,000)(500) = 5,000,000 operations
+PROBLEM URL: open.kattis.com/problems/hauntedgraveyard
+TAGS: bellman ford
+EXPLANATION:
+

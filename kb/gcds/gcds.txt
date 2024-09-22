@@ -1,0 +1,18 @@
+PROBLEM URL: https://open.kattis.com/problems/gcds
+TAGS: math, number theory
+EXPLANATION:
+Key observation: 
+    - Since a <= 100, we can say that there are only at most 100 possible candidates for GCD
+Approach:
+    - For every possible candidate of GCD (let's call it x), count the number of subarray that has x as GCD 
+    (we will store it in cnt[x])
+        + Create a new array (I call it curr in this submission), in which arr[i] = a[i] % x
+        + Use 2-pointers approach to find all segments of "arr" such that all elements in the segment is 0
+            + E.g: if arr = [0, 1, 2, 3, 0, 0, 0, 1, 2, 0, 0, 0]
+            + We can see that there are 1 segment of length 1 and 2 segments of length 3
+            + Given the length of the segment as sz, then the number of subarray that we can create out of that segments
+            is (sz)(sz + 1) / 2 
+    - Note, if a[i] is divisible by multiple of x, then a[i] is also divisible by x, meaning that some invalid subarray
+    will be counted as well (because their gcd is multiple of x, not x)
+    - This is resolved by subtracting sum(cnt[y]) from cnt[x], where y is all multiples of x
+    - The final answer will be the number of elements in cnt that is greater than 0

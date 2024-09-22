@@ -5,10 +5,15 @@ import re
 import sys
 import webbrowser
 from dotenv import load_dotenv
+from scan import scan
+from shutil import copyfile
+from db_utils import get_kattis_problem, get_solution, get_user_from_author, insert_solution
 
 import requests
 import requests.exceptions
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from db_utils import insert_solution
 # Python 2/3 compatibility
 if sys.version_info[0] >= 3:
     import configparser
@@ -326,24 +331,34 @@ ERROR: No language specified, and I failed to guess language from filename exten
     return submission_id+" "+problem
 
 def check_status(problemId):
-    #driver = webdriver.PhantomJS()
     driver = webdriver.Chrome()
+    
+    # Open the Kattis login page
     driver.get('http://open.kattis.com/login/email?')
-    username = driver.find_element_by_name("user")
+    
+    # Find the username and password fields and enter the login credentials
+    username = driver.find_element(By.NAME, "user")
     username.send_keys(KATTIS_USER)
-    password = driver.find_element_by_name("password")
+    password = driver.find_element(By.NAME, "password")
     password.send_keys(KATTIS_PASS)
-    submit = driver.find_element_by_xpath("//input[@type='submit']")
+    
+    # Submit the login form
+    submit = driver.find_element(By.XPATH, "//input[@type='submit']")
     submit.click()
 
+    # Poll for the problem status
     while True:
-        url = "http://open.kattis.com/submissions/"+str(problemId)
+        url = "http://open.kattis.com/submissions/" + str(problemId)
         driver.get(url)
-        pageText = driver.find_element_by_tag_name("body").text
-        status = driver.find_element_by_class_name("status").text
+        
+        # Get the page text and status
+        page_text = driver.find_element(By.TAG_NAME, "body").text
+        status = driver.find_element(By.CLASS_NAME, "status").text
+        
+        # Check if the status is final
         final = status_final(status)
         if final:
-            driver.quit()
+            driver.quit()  # Close the browser once the status is final
             return final
 
 def status_final(stat):
@@ -352,3 +367,160 @@ def status_final(stat):
         if stat.startswith(f):
             return f
     return None
+
+"""
+#CODE I USED TO REVERSE ENGINEER THE OLD KNOWLEDGE BASE:
+
+def get_all_submission_ids():
+    print("scanning solutions")
+
+    driver = webdriver.Chrome()
+
+    # Open the Kattis login page
+    driver.get('http://open.kattis.com/login/email?')
+
+    # Find the username and password fields and enter the login credentials
+    username = driver.find_element(By.NAME, "user")
+    username.send_keys(KATTIS_USER)
+    password = driver.find_element(By.NAME, "password")
+    password.send_keys(KATTIS_PASS)
+
+    # Submit the login form
+    submit = driver.find_element(By.XPATH, "//input[@type='submit']")
+    submit.click()
+
+    submission_ids = []
+
+    for i in range(10000):
+        print("page ",i)
+        # Navigate to the user's submissions page
+        driver.get("http://open.kattis.com/users/andrew-liu2?tab=submissions&page="+str(i))
+
+        # Find the table with ID "submissions"
+        table = driver.find_element(By.ID, "submissions")
+
+        # Find all rows (tr) with data-submission-id
+        rows = table.find_elements(By.CSS_SELECTOR, "tr[data-submission-id]")
+
+        if(len(rows) == 0):
+            break
+
+        # Loop through the rows and check the status
+        for row in rows:
+            # Find the td with data-type="status"
+            status_td = row.find_element(By.CSS_SELECTOR, 'td[data-type="status"]')
+
+            # Find the span within the td and check the text
+            status_span = status_td.find_element(By.TAG_NAME, "span")
+            if status_span.text == "Accepted":
+                # Print the submission ID
+                submission_id = row.get_attribute("data-submission-id")
+                submission_ids.append(submission_id)
+    
+    for sub_id in submission_ids:
+        driver.get("https://open.kattis.com/submissions/"+sub_id)
+        #Locate the href in the file source content
+        file_source = driver.find_element(By.CSS_SELECTOR, ".file_source-content-file")
+        
+        # Find the anchor tag containing the download link
+        download_link = file_source.find_element(By.TAG_NAME, "a").get_attribute("href")
+        
+        driver.get(download_link)
+
+    while(True):
+        pass
+
+def repopulate_knowledge_base():
+    # Path to the old directory containing the solutions
+    old_directory = "./kb/old"
+    
+    # Maintain a map of problems that have been added to the knowledge base by tag
+    added_tags = set()
+
+    # Iterate through all files in the old directory
+    for fname in os.listdir(old_directory):
+        print(fname)
+        # Check if the file is a supported solution file
+        if fname.endswith(".cpp") or fname.endswith(".py") or fname.endswith(".java"):  
+            # Remove any trailing numbers in parentheses (e.g., "(1)", "(2)") from the filename
+            cleaned_fname = re.sub(r' +\(\d+\)', '', fname).strip()
+            print("name", cleaned_fname)
+            file_path = os.path.join(old_directory, cleaned_fname)
+            
+            # Verify the annotation for the solution file
+            annotation_issues = verify_annotation(file_path)
+            if annotation_issues is None:
+                # Extract prefix from the filename
+                prefix = cleaned_fname.split('.')[0]
+
+                # Skip if the problem has already been added
+                if prefix in added_tags:
+                    print(f"Skipping duplicate problem: {prefix}")
+                    continue
+
+                # Process the solution if annotation is valid
+                annotation = scan(file_path)
+                parsed = parse_annotation(annotation)
+
+                # Mark this problem as added
+                added_tags.add(prefix)
+
+                # Create directories for storing the solution and write-up
+                directory = f"kb/{prefix}"
+                if not os.path.exists(directory):
+                    os.makedirs(directory)
+
+                # Save the solution file
+                sol_path = f"{directory}/{cleaned_fname}"
+                copyfile(file_path, sol_path)
+
+                # Write the annotation to a text file
+                write_up_path = f"{directory}/{prefix}.txt"
+                with open(write_up_path, 'w') as f:
+                    for line in annotation:
+                        f.write(line)
+
+                # Get the Kattis problem details
+                kattis_prob = get_kattis_problem(prefix)
+                if kattis_prob:
+                    kattis_id = kattis_prob[0]
+                    prob_id = kattis_prob[1]
+
+                    # Insert the solution into the database
+                    insert_solution(kattis_id, prob_id, [3], sol_path, write_up_path, parsed)
+
+    print("Knowledge base repopulated successfully.")
+
+
+def verify_annotation(fname):
+    prefix = fname.split('.')[0]
+
+    annotation = scan(fname)
+    if len(annotation) == 0:
+        return "Denied: Annotation not formatted correctly or does not exist."
+
+    parsed = parse_annotation(annotation)
+
+    # Validate the annotation against problem URL and tags
+    if not parsed[0].lower().endswith(prefix.lower()):
+        return "Denied: Annotation problem URL does not match solution name."
+    if len(parsed[1]) == 0 or len(parsed[1][0]) == 0:
+        return "Denied: At least one problem tag is required."
+    if len(parsed[2]) < 5:
+        return "Denied: Explanation was trivially short."
+    if "TAGS:" not in annotation[1]:
+        return "Denied: No list of tags."
+    if "EXPLANATION:" not in annotation[2]:
+        return "Denied: Error reading explanation."
+
+    return None
+    
+def parse_annotation(annotation):
+    url = annotation[0][12:].strip()
+    taglist = annotation[1][5:].strip().split(",")
+    taglist = [tag.strip() for tag in taglist]
+    explanation = "".join(annotation[2:])
+    return [url, taglist, explanation[12:]]
+
+#repopulate_knowledge_base()
+"""

@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/knapsack
+TAGS: dp, knapsack
+EXPLANATION:
+standard knapsack implementation

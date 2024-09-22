@@ -1,0 +1,7 @@
+PROBLEM URL: https://open.kattis.com/problems/robotmaze
+TAGS: bfs
+EXPLANATION:
+- Do a 3-state bfs from robot's starting position
+   + State 1: current position
+   + State 2: the direction from which the robot enters the current position
+   + State 3: whether the robot's 2 most recent moves upon reaching the current position are the same

@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/fire2
+TAGS: bfs
+EXPLANATION:
+first multisource bfs out from each fire to determine the time at which each square catches on fire.
+next, bfs from the starting position. A square is valid iff the time to reach it is less than the fire's time.

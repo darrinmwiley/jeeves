@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/knightsearch
+TAGS: dfs
+EXPLANATION:
+let node[i][j][k] be location (i,j) in the grid where you've seen the first K letters. 
+Solution exists if you can dfs from some [i1][j1][0] to any [i2][j2][10]

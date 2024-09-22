@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/spiderman
+TAGS: dp
+EXPLANATION:
+let dp[i][j] = the minimum height required to do exercises [0..i] and end at height j.
+you can then fill out dp[i+1][j+e[i+1]] and dp[i+1][j-e[i+1]] accordingly.
+you can keep an auxiliary array keeping track of the string representation of these choices, and the solution will lie at aux[i][0]

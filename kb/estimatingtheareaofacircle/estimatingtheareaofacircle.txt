@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/estimatingtheareaofacircle
+TAGS: Input, Output, IO, I/O, Math
+EXPLANATION:
+Pi can be computed as 4 * atan(1). For the first area, print pi * r^2, and for the second, print 4 * r^2 * c / m.
+Use a while loop to do this repeatedly until m is 0. Be sure to use setprecision to make your output accurate enough.

@@ -1,0 +1,7 @@
+PROBLEM URL: open.kattis.com/problems/treasurediving
+TAGS: graph, dijkstra, TSP
+EXPLANATION:
+First, contract the graph to an IxI distance graph between idols, as well as an array of length I representing the distance from the start to each idol. 
+This can be done using I+1 runs of Dijkstra, each starting at an idol or start position.
+Next, run Traveling Salesperson Problem on all of the idols where dp[i][j] is equal to the cost of visiting all of the idols in i's hash and ending at location j, starting from position 0.
+Last, the answer is argmax(bitCount(i)) where dp[i][j] + distFromStart(j) < a for some j

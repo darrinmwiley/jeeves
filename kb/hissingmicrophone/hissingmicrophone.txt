@@ -1,0 +1,4 @@
+PROBLEM URL: https://open.kattis.com/problems/hissingmicrophone
+TAGS: implementation
+EXPLANATION:
+- Code is self-explanatory

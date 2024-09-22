@@ -1,0 +1,31 @@
+PROBLEM URL: https://open.kattis.com/problems/landscape
+TAGS: segment tree, range update
+EXPLANATION:
+- A simpler problem 
+    + Consider this version of the problem, in which one will only either raise or depress
+    => It can be seen that this easier version can be solved using a data structure called Difference Array 
+       (https://www.geeksforgeeks.org/difference-array-range-update-query-o1/)
+- Observation to solve the original problem:
+    + Let diff be the difference array of the array arr
+    => It can be seen that adding x to all elements in diff[l:r+1] is arr is equivalent to 
+    adding x to arr[l], x*2 to arr[l + 1], x * 3 to arr[l + 2],..., and x * (r - l + 1) to all element from arr[r] afterward
+- Final solution
+    + If the operation is either raise or depress: 
+        Then add 1 to diff[x1] and subtract 1 from diff[x2 + 1]
+    + If the operation is either hill or valley
+        Let sz the length of update range
+        If sz is even:
+            It can be seen that we need to add 1 to all elements in diff[x1 : x1 + sz/2 - 1] (the first sz / 2 elements in the update range)
+            After that, we will need to subtract 1 from all elements in diff[x1 + sz / 2 + 1 : x2] (the rest of the elements except diff[x1 + mid/2])
+            Assume that (without loss of generality) sz is 4, we will have the following arrays as delta to each element:
+                hill_delta[x1:x2 + 1] = [1, 1, 0, -1]
+                valley_delta[x1:x2 + 1] = [-1, -1, 0, 1]
+        If sz is odd:
+            It can be seen that we need to add 1 to all elements in diff[x1 : x1 + sz/2] (the first ceil(sz / 2) elements in the update range)
+            After that, we will need to subtract 1 from all elements in diff[x1 + sz / 2 + 1 : x2] (the rest of the elements)
+            Assume that (without loss of generality) sz is 7, we will have the following arrays as delta to each element:
+                hill_delta[x1:x2 + 1] = [1, 1, 1, 1, -1, -1, -1]
+                valley_delta[x1:x2 + 1] = [-1, -1, -1, -1, 1, 1, 1]
+    + It can be seen that by using segment tree with lazy propagation, it is possible to create hill / valey with just 2 O(log(n)) call
+    + The final height of the position will be the prefix sum of the different array
+    + Final time complexity: O((n + k)*log(n))

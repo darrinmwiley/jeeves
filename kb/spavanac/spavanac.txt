@@ -1,0 +1,5 @@
+PROBLEM URL: http://open.kattis.com/problems/spavanac
+TAGS: example tag 1, example tag 2, etc...
+EXPLANATION:
+example explanation,
+can span multiple lines

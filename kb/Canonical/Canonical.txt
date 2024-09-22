@@ -1,0 +1,7 @@
+PROBLEM URL: https://open.kattis.com/problems/canonical
+TAGS: dp,binary search
+EXPLANATION:
+Step #1: Construct table from 0 to sum of 2 largest denomination
+Step #2: Use DP to construct the optimal solution
+Step #3: Use binary search to find the largest denomination of the current price
+Step #4: Check for each possible value if there is a difference between DP and greedy value

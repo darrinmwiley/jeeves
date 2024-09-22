@@ -1,0 +1,57 @@
+PROBLEM URL: https://open.kattis.com/problems/romanholidays
+TAGS: math
+EXPLANATION:
+
+* Observation #1: 
+ + If we have a list of x strings (sorted lexicographically), all of which are lexicographically smaller than some letter C, 
+ then by adding C to the front of all x strings, we are able to create x strings that can be added to the back of the original list without violating the 
+ lexicographical order. The same can be applied if we add another "D" to the newly-created x strings
+    e.g: 
+     + If we have the following list of ["A", "B", "C"], by adding a "D" to the front of all strings in the list, we will have the following new list:
+        ["A", "B", "C", "DA", "DB", "DC"]. Here it can be seen that all the new strings are appended to the back of the list and the lexicographical order is maintained
+     + By adding another "D" into the newly-created string, we will have the following list: 
+       ["A", "B", "C", "DA", "DB", "DC", "DDA", "DDB", "DDC"]
+       
+* Observation #2: 
+ + If we have a list of x strings (sorted lexicographically), all of which are lexicographically greater than some letter C, 
+ then by adding C to the front of all x strings, we are able to create x strings that can be added to the front of the original list without violating the
+ lexicographical order. The same can be applied if we add another "D" to the newly-created x strings
+     e.g: 
+      + If we have the following list of ["E", "F", "G"], by adding a "D" to the front of all strings in the list, we will have the following new list:
+         ["DE", "DF", "DG", "E", "F", "G"]. Here it can be seen that all the new strings are appended to the front of the list and the lexicographical order is maintained
+      + By adding another "D" into the newly-created string, we will have the following list: 
+         ["DDE", "DDF", "DDG", "DE", "DF", "DG", "E", "F", "G"]
+
+* In both cases, the list can be divided into sub-lists based on the number of "D" an element has
+
+* Approach: 
+ + (1) Split all the roman numerals of numbers that are smaller than 1000 into 2 group: 
+ group in which all roman numerals are lexicographically smaller than 'M' and that in which all roman numerals are greater than 'M'
+  => It can be seen that observation 1 can be applied to the first group and observation 2 can be applied to the second group
+ 
+ + For each value received from the input, do the following: 
+    + Retrieve its roman numeral and split the result into 2 parts: the "M" part and the non-"M" part
+    + If the non-M part is greater than "M" (lexicographically), then the result will be negative index. Else, it will be positive index
+    => The result will have the following formula:
+     + Positive index:
+        Let x be the size of group 1 (defined in (1))
+        Let y be the length of current M-part
+        Let z be number of values in group 1 (defined in (1)) that has roman numerals smaller than current non-"M" part
+        
+        If y == 0: the result will be the z
+        If y == 1: the result will be x + z + 1
+        If y > 1: the result will be x + (x+1) * (y-1) + z + 1
+        
+     + Negative index: 
+       Let x be the size of group 2 (defined in (1))
+       Let y be the length of current non-M part
+       Let z be number of values in group 2 (defined in (2)) that has roman numerals greater than or equal the current non-"M" part
+       
+       The result wil be -(z + x*y)
+    
+    e.g: 
+      * 1038 will have the 2 following parts: "M" and "XXXVIII"
+      * The non-M part is greater than M, so we know that the result will be negative
+      * The result for 1038 will be
+       -(1 + 54*1) = -55
+

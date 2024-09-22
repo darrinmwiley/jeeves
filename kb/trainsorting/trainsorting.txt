@@ -1,0 +1,7 @@
+PROBLEM URL: open.kattis.com/problems/trainsorting
+TAGS: dp, LIS
+EXPLANATION:
+the first train you select will be a sort of "middle" car. 
+Trains you add to the left must form a decreasing sequence, and those on the right must form an increasing sequence.
+return the largest LIS + LDS - 1 for any suffix of the input string. 
+Choice of suffix is analagous to choosing a middle car.

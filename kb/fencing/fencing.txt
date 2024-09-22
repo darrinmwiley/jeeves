@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/fencing
+TAGS: casework
+EXPLANATION:
+fist, generate the convex hull of the points, and use distance formula to determine perimeter.
+
+next, use single use coins dp to determine the smallest cost of obtaining enough wood to build the fence.

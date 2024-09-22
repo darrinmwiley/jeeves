@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/onechicken
+TAGS: IO, I/O, Input, Output, String, Formatting
+EXPLANATION:
+If N < M, output the first message (with P); otherwise output the second message. Be sure to use a ternary to print nothing ("")
+if P or Q are 1 and "s" otherwise so piece(s) is plural iff there are multiple pieces of chicken in question.

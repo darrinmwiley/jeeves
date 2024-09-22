@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/shortestpath2
+TAGS: dijkstra
+EXPLANATION:
+straightforward dijkstra's algorithm, just calculate the cost of traversing an edge at the next opportunity. 
+
+Watch out for the edge case of P = 0, where the edge is only available at a single time.

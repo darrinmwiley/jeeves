@@ -1,0 +1,22 @@
+PROBLEM URL: https://open.kattis.com/problems/digitsum
+TAGS: dp
+EXPLANATION:
+- There will 2 types of dp involved: unbounded_dp and bounded_dp
+    + unbounded_dp[i] will stores digit sum of all numbers that have at most i digits
+    + bounded_dp[i] will stores digit sum of all numbers that are <= the number formed by the last i digits of a given number
+- Unbounded_dp:
+    + Base case: unbounded_dp[1] = 45 (digit sum of all numbers that has at most 1 digit is 45 (sum from 0 to 9))
+    + Recurrence relation: unbounded_dp[i] = sum(unbounded_dp[i-1] + j*pow(10, i-1)) for all j such that (0 <= j < 10)
+- Bounded_dp: 
+    + Base case: bounded_dp[i] = last_digit*(last_digit + 1)/2 (arithmetic sum from 0 to last_digit)
+    + Recurrence realtion: 
+        Let p be the number of digits on the right of the i-th digit (from the right) 
+        Let digit[i] be the i-th digit from the right
+        Let x be the number that is created by concatenating all digits to the right of digit[i] 
+        bounded_dp[i] = sum(unbounded_dp[p] + j*pow(10, p)) + digit[i]*(x+1) + bounded_dp[i+1] for all j such that (0 <= j < digit[i])
+- Approach:
+    + Compute unbounded_dp up to the number of digits in B
+    + Let solve(x) be bounded_dp[0] for a given x
+    + The result will be solve(b) - solve(a-1)
+
+- For better understanding about Digit Sum DP, refer to Codeburner's DP Material 

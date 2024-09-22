@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/grid
+TAGS: bfs
+EXPLANATION:
+standard bfs where successor states are a function of the value at your current location

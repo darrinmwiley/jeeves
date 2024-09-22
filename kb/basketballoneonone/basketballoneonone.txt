@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/basketballoneonone
+TAGS: trivial
+EXPLANATION:
+the winner always makes the last shot

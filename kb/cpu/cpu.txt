@@ -1,0 +1,9 @@
+PROBLEM URL: https://open.kattis.com/problems/cpu
+TAGS: bruteforce
+EXPLANATION:
+- Key observation:
+    + There are only more or less 200 possible explosive number within the given range
+    + It is possible to generate all possible explosive numbers within given range without getting TLE
+- Approach:
+    + Generate all possible explosive numbers and store all of them in an array (in sorted order) 
+    + For each query, the low and upper bound can be found using binary search

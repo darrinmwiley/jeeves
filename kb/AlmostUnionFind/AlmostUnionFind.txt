@@ -1,0 +1,15 @@
+PROBLEM URL: open.kattis.com/problems/almostunionfind
+TAGS: union find, DSU
+EXPLANATION:
+This is a simple modification on the Union Find data structure. 
+
+We will make our Union Find variable size, and add an auxiliary array called point, where point[i] is the location of element i in the modified Union Find. 
+
+To implement union(a,b), we just do a standard union of (point[a], point[b])
+
+To implement move(a,b):
+1) remove a from the Union Find by subtracting one from it's parent size and setting point[a] to null
+2) add a new element to the union find, and set point[a] to this new index.
+3) perform our modified union on a and b now.
+
+Each of these operations take constant time, so overall the time and space complexity is O(n)

@@ -1,0 +1,21 @@
+PROBLEM URL: https://open.kattis.com/problems/foolingaround
+TAGS: brute-force, dp
+EXPLANATION:
+- Approach: 
+    1/ Write a separate brute-force program that will find all possible N where Bob can win (pseudo-code for this step will be provided)
+    2/ Copy-paste the result from previous step into a hashset 
+    3/ For each test case
+       + If given N exists in the created hashset, print out Bob
+       + Else, print out Alice
+    Refer to below code for further clarification
+
+- Pseudo code to find possible win value for Bob (step 1)
+  + Find all primes <= 1e9 using Sieve
+  + Generate all possible number of stones that can be taken in 1 move (subtract 1 from all primes)-> store it in an array (we will call it move_list for now)
+  + Let dp[i] be whether Alice can win if there are i stones initially => we want to find all i such that dp[i] is false
+  + Base case: dp[0] = False
+  + For all i from 1 to 1e9:
+        For all j in move_list
+            if (i-j >= 0): dp[i] = dp[i] || (!dp[i-j])
+  + Return all i where dp[i] is false and i>0 (there will be less than 400 such i)
+

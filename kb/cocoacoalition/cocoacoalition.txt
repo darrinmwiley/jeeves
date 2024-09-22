@@ -1,0 +1,13 @@
+PROBLEM URL: open.kattis.com/problems/cocoacoalition
+TAGS: casework, math
+EXPLANATION:
+1) you can do any amount in 3 moves
+   
+   assume that for a given case b > m. 
+   If that is not the case, you can obviously make a horizontal and vertical cut to the bottom row and have a 2 cut solution. 
+    
+   with the first move, you can get within m squares of the goal.
+   with the second move, you can slice the bottom m squares from the board
+   with the third move, you can make a vertical cut to that slice to make up the difference
+2) a 1 cut solution exists only if n or m divides a - obvious that some number of rows or columns would have to make the exact amount
+3) a 2 cut solution exists if there is a cut that leaves a 1 cut solution

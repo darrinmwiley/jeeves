@@ -1,0 +1,6 @@
+PROBLEM URL: https://open.kattis.com/problems/heartrate
+TAGS: math
+EXPLANATION:
+- BPM = 60*b/p
+- Low ABPM = 60 * (b-1) / p
+- High ABPM = 60 * (b+1) / p

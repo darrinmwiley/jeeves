@@ -1,0 +1,33 @@
+PROBLEM URL: open.kattis.com/problems/islands2
+TAGS: Geometry, Math, Brute Force, Graph, Graphs, Graph Theory, Directed Graph, Directed Graphs, Components, Strongly Connected Components, Strong Connectivity, Connectivity, Digraph, Digraphs, Directed Acyclic Graph, DAG, DFS, Depth-First Search, Depth First Search
+EXPLANATION:
+First, compute which island each tree belongs to. This can be done in O(n * m) by brute-forcing all tree-island pairs with some basic geometry.
+(The distance from the tree to the island center should be at most the island's radius.)
+
+Next, we need to determine, for each ordered pair of distinct islands, whether we can throw an item from the first island to the second. This can again be brute-forced
+in O(n * m) by checking, for each tree, which islands besides the island it is on are within its throwing range.
+(The distance from the tree to the island should be at most the island's radius plus the tree's height times k).
+Record these pairs as edges in a digraph (represented by an adjacency matrix).
+
+Now, identify all strongly connected components (henceforth called clusters) in this digraph (using i.e. Kosajaru's Algorithm).
+The goal is to make the whole digraph strongly connected by possibly adding a single undirected edge.
+
+We can now compute the minimum tunnel lenth between each pair of distinct clusters in O(n^2) easily by brute-forcing all pairs of islands.
+Note that the problem requires that each tunnel endpoint is at least 100cm away from the shore.
+Thus, after finding the distance between the island centers and subtracting their radii, you must also add 200cm.
+
+Now, consider a digraph in which we collapse all clusters into single vertices.
+There is an edge from cluster a to cluster b in this new graph iff there was an edge from some vertex in cluster a to some vertex in cluster b in the original.
+No set of at least 2 vertices in this new graph may be strongly connected, because then they would be strongly connected in the original graph.
+This implies that there are no cycles (this new graph is a DAG), vertices in a cycle are strongly connected.
+
+In order to make the graph strongly connected by adding a single undirected edge, consider the following possibilities:
+1) There is only one cluster and the answer is 0.
+2) There are only two clusters and we can simply connect them.
+
+If none of these apply, we must find the DAG's source (indegree-0) and sink (outdegree-0) vertices.
+There must be at least one of each, or else we could form a cycle by repeatedly following edges backwareds or forwards, respectively.
+If there is exactly one of each, we can simply connect the source to the sink.
+Since the source can reach everything, everything can reach the sink, and the sink can now reach the source, the whole graph is strongly connected.
+If there are multiple sources, it is impossible to connect a sink to all of them, and if there are multiple sinks, it is impossible to connect all of them to a source.
+Thus, if none of the previous cases apply and there is not exactly one source and one sink, the answer is impossible.

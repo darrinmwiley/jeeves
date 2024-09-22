@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/divisors
+TAGS: sieve, ncr, math
+EXPLANATION:
+sieve primes to 432, then memoize the prime factorization of all factorials from 1 to 432
+the number of factors of a number is the product of (the multiplicity of each prime factors + 1)
+N choose K is equal to N!/(K!(N-K)!), so the prime factorization is found by taking that of N and removing the prime factors corresponding to K! and (n-k)!

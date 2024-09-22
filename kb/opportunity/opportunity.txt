@@ -1,0 +1,9 @@
+PROBLEM URL: https://open.kattis.com/problems/opportunity
+TAGS: math
+EXPLANATION: We take the sums of all 8 subsets of x, y, and z
+* 				The opportunity cost is the maximum difference of one
+* 				of these subsets to a corresponding subset of another phone
+* 				For each possible subset, we keep track of the max value among
+* 				all phones, so we can quickly get the opportunity cost
+* 				for each phone
+* 

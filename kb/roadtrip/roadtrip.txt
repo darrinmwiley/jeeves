@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/roadtrip
+TAGS: sorting, sweep
+EXPLANATION:
+each gas station has an interval of time where it will be 'active', meaning inside of this interval, you could be using gas that came from that station.
+sort the endpoints of these intervals and sweep through them, maintaining a sorted list of available station to get gas from.
+Always take gas from the cheapest active station.

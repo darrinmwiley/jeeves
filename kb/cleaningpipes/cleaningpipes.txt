@@ -1,0 +1,14 @@
+PROBLEM URL: open.kattis.com/problems/cleaningpipes
+TAGS: Math, Geometry, Graph, Vector, Line, Line Segment, Intersection, Line Segment Intersection, Bipartite, Bipartite Graph, Coloring, Graph Coloring, DFS, Depth-First Search, Depth First Search, Cycle
+EXPLANATION:
+We are given a set of line segments and must find a subset of them that includes each intersection exactly once (excluding wells). First, let us compute those intersections.
+The problem is small enough that this can be brute-forced for all pairs of line segments. Skipping pairs with the same well, simply check whether both line segments have
+endpoints on opposite sides of the line containing the other. For segment AB and line CD, consider the 2D cross products of the vector CD with CA and with CB. If either cross
+product is 0 or they have opposite signs, segment AB intersects line CD. Note that we do not need the specific location of the intersection for this problem (although that could
+be computed with similar logic).
+
+Now, we have a collection of segments and all of the intersections between them. Construct a graph where each node represents a segment and two nodes are connected iff their
+segments intersect. No three segments intersect at the same point (besides wells), so each edge corresponds to a unique intersection. Thus, the problem is reduced to finding
+a way to partition the vertices into two groups (those with a robot and those without), such that each edge has one vertex in each group; in other words, a 2-coloring. This
+can be computed using DFS: at before adding a node to the stack, check its color. If it is uncolored, color it the opposite of the current node (or arbitrarily if it is the
+first node). If it is already colored, do not add it to the stack; if that color is the same as that of the current node, the 2-coloring has failed and the answer is impossible.

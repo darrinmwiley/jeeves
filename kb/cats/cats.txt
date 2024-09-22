@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/cats
+TAGS: mst 
+EXPLANATION:
+create a min spanning tree and make sure the amount of milk is <= than MST cost + # cats

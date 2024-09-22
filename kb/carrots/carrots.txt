@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/carrots
+TAGS: input, output
+EXPLANATION:
+Read in N and P. Print the value of P. Contestant Descriptions can be ignored.

@@ -1,0 +1,9 @@
+PROBLEM URL: https://open.kattis.com/problems/nvwls
+TAGS: hashing
+EXPLANATION:
+We turn every dictionary word into only its consonants, hash it, so store the hash, along with the number of vowels
+We can use a rolling hash for a dp, where dp[i] is the max amount of vowels that can be done in a translation
+To find dp[i], we check all possible lengths l, and if the corrseponding suffix is in the dictionary, then use dp[i-l] to
+update dp[i].
+This runs in time because there is only a maximum of sqrt(N) possible lengths, running in O(Nsqrt(N))
+

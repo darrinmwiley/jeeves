@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/wheresmyinternet
+TAGS: dfs, graph
+EXPLANATION:
+create a graph of connected homes and then dfs out from house 1. Anything reachable is connected.

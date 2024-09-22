@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 from discord.ext import tasks, commands
 from datetime import datetime, timedelta
 import time
-import mysql.connector
 import socketserver
 import argparse
 import re

@@ -1,0 +1,6 @@
+PROBLEM URL: https://open.kattis.com/problems/porpoises
+TAGS: dp, matrix exponentation
+EXPLANATION:
+* Starting from the matrix {{0, 1}, {1, 1}}, find its year-th power
+* => result will be matrix[1][0]
+* For more details on this technique: refer to this video: https://www.youtube.com/watch?v=eMXNWcbw75E

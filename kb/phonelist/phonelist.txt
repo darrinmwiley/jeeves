@@ -1,0 +1,6 @@
+PROBLEM URL: https://open.kattis.com/problems/phonelist
+TAGS: trie
+EXPLANATION:
+- Sort phone list in ascending order based on length
+- For each phone number, insert it into a trie
+* => If a flag is met during insertion, the current phone number's prefix is the same with one of the other phone numbers => list is invalid

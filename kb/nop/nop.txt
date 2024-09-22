@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/nop
+TAGS: easy, math, modulus
+EXPLANATION:
+iterate through code keeping track of bytes and nop's, a nop is required when
+next char is capital and bytes % 4 != 0

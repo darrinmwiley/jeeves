@@ -1,0 +1,9 @@
+PROBLEM URL: https://open.kattis.com/problems/nikola
+TAGS: dp
+EXPLANATION:
+- Let dp[pos][j] be min cost if Nikola reaches pos-th square with a jump of length "j"
+=> To reach pos with j jumps, Nikola had to reach either (pos - j)-th square with a jump of length (j-1) or (pos + j)-th square with a jump of length (j) before that (*)
+=> We have dp relation: dp[pos][j] = min(dp[pos-j][j-1], dp[pos+j][j]) + cost[pos] (cost[pos] is entry fee for pos-th square)
+- The most optimal solution will dp[n][j] for every possible j
+- (*): Make sure to check if pos-j and pos+j are valid square
+- Base case would be dp[2][1] = cost[2]

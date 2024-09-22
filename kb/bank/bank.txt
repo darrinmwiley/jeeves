@@ -1,0 +1,4 @@
+PROBLEM URL: https://open.kattis.com/problems/bank
+TAGS: greedy, sorting
+EXPLANATION:
+Sort people by their value. Take people with the highest value and put them as far back as possible so that they can still be served before the bank closes. If it not possible to do that, then they are not part of the solution (don't add their cash amount to the answer).

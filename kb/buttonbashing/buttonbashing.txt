@@ -1,0 +1,7 @@
+PROBLEM URL: open.kattis.com/problems/buttonbashing
+TAGS: dynamic programming, dp
+EXPLANATION:
+Stores the minimum number of presses required to get to each time. Every time is unreachable
+by default (except 0, which takes 0 presses). For each p, times reachable from those which
+took p presses to reach, and which have not already been reached, are reachable in p+1 times.
+This stops when no new times are reached in one iteration.

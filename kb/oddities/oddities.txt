@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/oddities
+TAGS: IO, I/O, Input, Output, Loop, Math
+EXPLANATION:
+In a loop over [0, n), read in x and print x. Then print " is odd" if x%2!=0 and " is even" otherwise.

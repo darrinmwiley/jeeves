@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/thelastproblem
+TAGS: String, I/O, IO, Input, Output
+EXPLANATION:
+Use getline to read a string from cin. Then, cout "Thank you, " followed by the string followed by ", and farewell!".

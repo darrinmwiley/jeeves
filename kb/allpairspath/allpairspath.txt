@@ -1,0 +1,6 @@
+PROBLEM URL: https://open.kattis.com/problems/allpairspath
+TAGS: floyd-warshall
+EXPLANATION:
+- This is just implementation of Floyd Warshall Algorithm, but here are a few things to beware:
+  + Parallel edges exist
+  + Negative edges exist => negative cycles may also exist 

@@ -1,0 +1,5 @@
+PROBLEM URL: https://open.kattis.com/problems/terraces
+TAGS: dfs
+EXPLANATION:
+- For each cell A in the grid, if there is another cell B such that height[A] > height[B], then mark cell A as impossible 
+- For each cell A in the grid, if A is marked impossible, use dfs (traverse up, down, left, right) to mark all cell C such that height[C] == height[A]

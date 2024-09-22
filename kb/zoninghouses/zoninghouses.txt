@@ -1,0 +1,31 @@
+PROBLEM URL: https://open.kattis.com/problems/zoninghouses
+TAGS: segment tree (beats?)
+EXPLANATION:
+- This problem can be solved using a special kind of Segment Tree, in which each node will keep track of the 
+following information:
+    + fmax - largest value in the current range
+    + smax - largest value that is strictly smaller than fmax (second_max)
+    + cnt_fmax - number of occurrences of fmax in the current range
+    + fmax_pos - index of occurrence of fmax in the current range
+
+    + fmin - smallest value in the current range
+    + smin - smallest value that is strictly larger than fmin (second_min)
+    + cnt_fmin - number of occurrences of fmin in the current range
+    + fmin_pos - index of occurrence of fmin in the current range
+ 
+ - Create 2 of such segment trees, one for x coordinates, one for y coordinates
+ - Build the 2 trees based on the coordinates of the houses
+
+ - For each query:
+    + It can be seen that all the houses included in the range will be within the 
+    square with side of length max(x_tree.fmax - x_tree.fmin, y_tree.fmax - y_tree.fmin)
+    + It can be seen if there is only 1 house with x_tree.fmax as x coordinate, then the square may be able
+    to shrink to max(x_tree.smax - x_tree.fmin, y_tree.fmax - y_tree.fmin)
+        + If the removed house happens to be the only house that has its y-coordinates as y_tree.fmax or y_tree.fmin
+        then we can further shrink the square to either max(x_tree.smax - x_tree.fmin, y_tree.smax - y_tree.fmin) or 
+        max(x_tree.smax - x_tree.fmin, y_tree.fmax - y_tree.smin) respectively
+        + Otherwise, the square will be max(x_tree.smax - x_tree.fmin, y_tree.fmax - y_tree.fmin)
+    + Same observation can be applied if there is only one 1 house with x_tree.fmin as x coordinates
+    + Remember to check the case in which only the y bounds can be shrinked
+     
+

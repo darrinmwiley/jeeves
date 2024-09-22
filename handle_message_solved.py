@@ -19,7 +19,7 @@ async def handle_message_solved(message, client):
         altered.append((result[0], result[1], result[2], dict[result[3]], result[4]))
     fname = "solved_problems.txt"
     file = open(fname, "w")
-    tab = table(("Problem Name", "Tag", "Diff","Solved By", "Date"), results, False)
+    tab = table(("Problem Name", "Tag", "Diff","Solved By", "Date"), altered, False)
     file.write(tab)
     file.close()
     fil = discord.File(fname)

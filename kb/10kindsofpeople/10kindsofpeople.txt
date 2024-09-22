@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/10kindsofpeople
+TAGS: disjoint set, union find, union, find, grid
+EXPLANATION:
+Creates a union find structure where each set represents a zone.
+Checks whether each query has two points from the same zone, and if so, what type.

@@ -1,0 +1,10 @@
+PROBLEM URL: https://open.kattis.com/problems/faultyrobot
+TAGS: dfs
+EXPLANATION:
+- Do a dfs on the graph while keeping track of 2 states: the current position, and whether the bug occurred
+- If the bug occurred
+  + If there is a forced path, follow the forced path
+  + Else mark the node as possible stop and return
+- If the bug has not occurred yet
+  + If there is a forced path, consider the case in which the bug occurs at the current position and does not occur at the current position
+  + DFS to non-forced neighbor (consider the case in which the bug occurs at the current position)

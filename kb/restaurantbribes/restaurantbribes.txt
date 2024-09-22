@@ -1,0 +1,8 @@
+PROBLEM URL: open.kattis.com/problems/restaurantbribes
+TAGS: brute force, math
+EXPLANATION:
+We can consider each of the bribeable people independently. The cost of bribing someone to give p points is (a * p) ^ 2.
+Let friends(x) be the number of friends of x who can be bribed. Then the revenue for bribing person y to give p points is
+the summation of (100 * p / friends(z) - (a * p) ^ 2) over all unbribeable friends z of y. Thus, the profit
+is sum(100 * p / friends(z) - (a * p) ^ 2) - (a * p) ^ 2. Since p is between 0 and 10, we can brute force all p
+for each person and take the maximum.

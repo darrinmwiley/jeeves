@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/timeloop
+TAGS: input, output, loop
+EXPLANATION:
+Run a loop starting at 1 with condition i <= N. Each iteration, print i followed by " Abracadabra".

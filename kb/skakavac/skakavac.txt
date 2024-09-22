@@ -1,0 +1,22 @@
+PROBLEM URL: open.kattis.com/problems/skakavac
+TAGS: Segment Tree, Range, Range Max, LIS, Longest Increasing Subsequence, Grid, Dynamic Programming, DP
+EXPLANATION:
+Note: If you are using this approach, it is recommended that you implement it in C++. This implementation has a runtime of 5.86 seconds, while the maximum is 6. Due to the
+large input size, fast I/O is also recommended.
+
+This problem can be thought of as finding the longest decreasing subsequence of any sequence of points satisfying the given constraints ending at (R, C). Thus, the following DP
+approach gives the correct answer (slowly). Create a list of 1e6 lists numbered 0 to 999999. For each flower at (i, j) with p petals, add it to list (1e6 - p). This reverse
+ordering converts the problem to Longest Increasing Subsequence. Then, for each list in order, compute the LIS of each flower. This is simply one plus the maximum LIS of all
+cells reachable from it in one step. Note that the changes for a list of flowers with the same number of petals must be applied to the grid after all values have been computed
+for that list. Otherwise, a sequence consisting of multiple flowers with the same number of petals could be formed. This algorithm runs too slowly (O(n^3)), but it can be
+accelerated.
+
+First, consider the simple 1D LIS problem. This can be solved by processing the elements in ascending order by value, as above. The "reachable elements" are just the elements
+before the current one in the original array. The new LIS for a value can be computed by finding the maximum LIS in the portion of the array preceding the current element
+plus one. While this is normally O(n^2) assuming the values in the array are O(n), it can be sped up to O(nlg(n)) by storing the LIS values in a range-max segment tree, which
+reduces each range max query to O(lg(n)). This differs from the usual O(nlg(n)) approach and has larger constant factors, but it is easier to extend to the above problem.
+
+Note that the "reachable elements" fall into 8 separate ranges, each of which is a 1-wide strip of elements parallel to one axis of the grid. Instead of storing the maximum
+LIS values in a grid, store them in two arrays of n range-max segment trees: one with a tree for each row and one with a tree for each column. Then, processing each flower
+only requires 8 range-max calls and a point update for storing the LIS length. Thus, the whole algorithm runs in O(m + n^2lg(m)) (where m is the maximum number of petals on a
+flower, assumed to be 1e6) with a large-ish constant factor.

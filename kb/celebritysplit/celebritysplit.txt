@@ -1,0 +1,19 @@
+PROBLEM URL: https://open.kattis.com/problems/celebritysplit
+TAGS:math, meet-in-middle
+EXPLANATION: We split the mansions into two even sets. We are able to
+* 				go over all 3^12 < 600000 possibilities for either giving
+* 				Jack or Jill the mansion, or throwing it out. We keep track of
+* 				Jack and Jills total, and we map the difference in the sums
+* 				to the maximum corresponding total for Jack.
+* 
+* 				We then iterate over the second set, keeping track of the
+* 				sums like last time. 
+* 
+* 				Using the difference map, we are able to find whether an 
+* 				arrangement of the first set can come together with the second set
+* 				to create an even sum
+* 
+* 				We keep the maximum possible sum, and take 2*max away from
+* 				the sum of all mansions to find the value of the mansions
+* 				thrown away.
+* 

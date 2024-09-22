@@ -1,0 +1,8 @@
+PROBLEM URL: https://open.kattis.com/problems/tank
+TAGS: binary search, shoelace theorem
+EXPLANATION:
+- Binary search through all possible height of the water, for each candidate: 
+   + Draw a line y = candidate through the polygon
+   + Compute the area of the polygon created by the points below or intersect the line drew in step 1 using the Shoelace Theorem
+   + The volume for water at a given height can be computed from the area, the height, and the given depth
+   + The final result will be the height that resulted in the volume closest to the given amount of litters 

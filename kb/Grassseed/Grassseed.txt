@@ -1,0 +1,11 @@
+PROBLEM URL: open.kattis.com/problems/grassseed
+TAGS: GrassSeed, Seed, Grass
+EXPLANATION:
+- Make cost, numLawns, and TotalCost variables of double number type and set them to zero
+- Read in cost and numLawns
+- loop from 1 to numLawns
+- Within the loop, make width, length, and lawnAreaCost variables of double number type and set them to zero
+- Read in width and length
+- Set lawnAreaCost to (width * length) * cost
+- Add lawnAreaCost to totalCost
+- Output totalCost

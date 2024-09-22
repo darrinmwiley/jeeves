@@ -1,0 +1,5 @@
+PROBLEM URL: https://open.kattis.com/problems/narrowartgallery
+TAGS: dp
+EXPLANATION:
+3D dp table. dp[row][col][k] is min cost to have k rooms closed from room (row,col) to the bottom of the hall. Note: dp[row][col][k] does not necessarily have to have room (row, col) closed.
+See comments for dp states

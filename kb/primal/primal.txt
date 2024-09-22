@@ -1,0 +1,12 @@
+PROBLEM URL: https://open.kattis.com/problems/primal
+TAGS: binary search
+EXPLANATION:
+- Binary search the answer
+- Let x be the current prime that is considered
+  + Split the array in a way such that every sub-segments are >= x
+  + If there are k segments, then x is obviously a possible answer
+  + If there are less than k segments, then since k <= n, there is a way to split some sub-segments such that there will be k subsegments
+  without changing the validity of the answer
+  => x is also a possible answer
+  + If there are more than k segments, then x cannot be the answer
+  + Adjust the search space accordingly based on whether x is the answer

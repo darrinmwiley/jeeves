@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/planina
+TAGS: input, output, math
+EXPLANATION:
+The result is equal to (2^N + 1)^2. 2^N can be calculated as 1<<N.

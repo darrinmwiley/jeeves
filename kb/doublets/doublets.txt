@@ -1,0 +1,14 @@
+PROBLEM URL: open.kattis.com/problems/doublets
+TAGS: Graph, Shortest Paths, SSSP, BFS, Breadth First, Breadth-First, Breadth First Search, Breadth-First Search, String, Queue, Backtracking
+EXPLANATION:
+This problem can be solved correctly by creating a graph, where each vertex corresponds to a string. There is an edge between any two strings that form a doublet. Then, the
+answer can be found by doing a breadth-first search starting at the one string and ending at the other. At each step, store the previous string's id to enable backtracking
+later.
+
+Unfortunately, this approach is too slow. To see this, consider a set of strings that are the same at all but one character. This set will form a clique in the graph. This
+set can have up to 26 vertices and nCr(26, 2) = 325 edges. The key observation is that the number of edges can be reduced by adding an extra vertex for each of these cliques.
+This can be done by, for each position in each word, inserting an auxiliary vertex corresponding to the string with that character replaced with a dollar sign. For instance,
+if the dictionary is {"bog", "dog"}, also insert "$og", "b$g", "d$g", "bo$", and "do$". While the number of vertices increases, the total number of edges decreases by more
+than enough to compensate for that in the worst case. Then, use the same algorithm before (except you must also avoid printing any of the auxiliary strings). This approach
+has the added benefit of making the process of determining which edges to insert very easy; whenever you generate an auxiliary string, connect it to the string it was generated
+from.

@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/twostones
+TAGS: io, input, output, even, odd, game
+EXPLANATION:
+Alice wins whenever N is odd; Bob wins whenever N is even.

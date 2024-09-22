@@ -1,0 +1,9 @@
+PROBLEM URL: https://open.kattis.com/problems/alexandbarb
+TAGS: math, observation, dp
+EXPLANATION:
+- Let dp[i] be True if Alex can win if there are i cards on the stack initially
+- When using dp on small dataset, it is possible to see that dp[i] = dp[i+n+m] for all i 
+=> It is possible to say that dp[k] = dp[k%(n+m)]
+- For all i in the range of [0, n+m-1]: dp[i] is False only when i < m
+
+=> Approach: If (k%(n+m) < m), then Barb will win, else Alex wins

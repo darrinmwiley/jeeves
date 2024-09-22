@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/filip
+TAGS: easy
+EXPLANATION:
+read in strings, reverse, parse, compare

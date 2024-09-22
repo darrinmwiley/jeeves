@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/faktor
+TAGS: easy, math
+EXPLANATION:
+just loop X until ceil(X/A) >= I

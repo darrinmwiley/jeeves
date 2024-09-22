@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/bubbletea
+TAGS: greedy
+EXPLANATION:
+find the cheapest possible drink and then make as many as possible

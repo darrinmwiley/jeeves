@@ -1,0 +1,4 @@
+PROBLEM URL: https://open.kattis.com/problems/ovalwatch
+TAGS: Hashmap, Treeset
+EXPLANATION:
+Look at comments

@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/cdvii
+TAGS: sweep
+EXPLANATION:
+sort and sweep traffic events, adding begin events to a map and removing
+them upon end event and mapping the charge

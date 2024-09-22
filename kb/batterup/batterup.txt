@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/batterup
+TAGS: easy, array
+EXPLANATION:
+sum of non negative values, divided by number of non negative values

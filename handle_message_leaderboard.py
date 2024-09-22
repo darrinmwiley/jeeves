@@ -50,6 +50,7 @@ async def handle_message_leaderboard(message, client):
     for key in diffMap.keys():
         user = get_user(key)
         display_name = await get_display_name(user[1], client)
+        #print("Display name: "+display_name)
         users.append((display_name, diffMap[key], numMap[key]))
     index_to_sort_by = 1;#2 would be by abolute number of probs
     users = sorted(users, key = sort_by_tuple_index(ignore_diff, False))

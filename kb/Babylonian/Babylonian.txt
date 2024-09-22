@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/babylonian
+TAGS: base conversion, math
+EXPLANATION:
+convert base 60 to base 10

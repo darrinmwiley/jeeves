@@ -1,0 +1,12 @@
+PROBLEM URL: https://open.kattis.com/problems/island
+TAGS: union-find
+EXPLANATION:
+To find the number of islands, we can use union find to connect ('X' and '#') and ('#' and '#'). The number of 
+non-water connected components is the number of islands
+
+To find the number of bridges, we can look at every 'X', and count the number of bridges that it is the endpoint of.
+Sum it up and divide by two to account for the fact that there are two endpoints on every bridge.
+
+Afterwards, use union find to connect ('X' and 'B') and ('B' and 'B'), and the number of non-water components is the number
+of buses needed
+

@@ -1,0 +1,6 @@
+PROBLEM URL: https://open.kattis.com/problems/marypartitions
+TAGS: dp
+EXPLANATION:
+* Given dp[n][idx] as the numbers of ways to partition n from the first "idx + 1" powers of 3
+* => At that point, dp[n][idx] can be reached from either dp[n - pow_of_m[idx]][idx] or dp[n][idx-1]
+* => dp[n][idx] = dp[n-pow_m[idx]][idx] + dp[n][idx-1]

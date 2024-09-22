@@ -1,0 +1,9 @@
+PROBLEM URL: open.kattis.com/problems/bottledup
+TAGS: implementation, math
+EXPLANATION:
+- Let x be the number of large bottles, y be the number of small bottles
+=> We want to solve the following equation: 
+    + v1(x) + v2(y) = s (x, y are integers and x+y is minimized)
+- Approach: 
+    + Iterate through all possible x and determine if there is a valid y such that the above equation holds
+    + Among all valid solutions, return the one that has minimized x+y

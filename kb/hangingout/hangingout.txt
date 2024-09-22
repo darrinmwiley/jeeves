@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/hangingout
+TAGS: easy
+EXPLANATION:
+parse each event and calculate answer accordingly

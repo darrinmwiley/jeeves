@@ -1,0 +1,11 @@
+PROBLEM URL: open.kattis.com/problems/naturereserve
+TAGS: mst
+EXPLANATION:
+There is never a reason to send the same data over a channel more than once.
+
+Hence for some MST, the entire program will be transmitted once for each station
+that doesn't already have it. This amounts to a constant L*(N-S). Aside from this,
+the only cost is that of creating the MST by activating communication channels.
+
+Channels that start with the program are all connected with cost 0. After that, finish
+the MST and report cost + L*(S-N).

@@ -1,0 +1,7 @@
+PROBLEM URL: open.kattis.com/problems/connectthedots
+TAGS: implementation
+EXPLANATION:
+scan through the input to find the location of every dot
+replace '.' with either '|' or '-'
+replace '| and '-' with '+' if you travel over in both directions
+be sure not to replace dot characters

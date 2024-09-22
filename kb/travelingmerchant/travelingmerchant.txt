@@ -1,0 +1,20 @@
+PROBLEM URL: https://open.kattis.com/problems/travelingmerchant
+TAGS: range queries, segment tree
+EXPLANATION:
+Assume all paths are forwards
+The cycle of days is offset by 7, so the problem can instead be represented as 7 possible constant arrays, 
+based on starting point. The problem can be solved with a segment tree.
+
+For each range, store the max value, minimum value, and max possible profit.
+In order to update a range, updating the max and min is simple.
+To update the max possible profit, notice that either
+ - both buy and sell day are in the left half
+ - both buy and sell day are in the right half
+ - the buy day is in the left half and the sell day is in the right half
+The first two cases are accounted for by common segment tree implementations
+The third case is accounted for by the min value in the left half, and max value in the right half
+
+To account for backwards arrays, the array can be reversed and solved alongside the rest of the problem.
+
+This gives 7*2 = 14 possible arrays and segment trees to account for
+

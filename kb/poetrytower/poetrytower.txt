@@ -1,0 +1,15 @@
+PROBLEM URL: open.kattis.com/problems/poetrytower
+TAGS: brute force, hashing, flow, matching
+EXPLANATION:
+there are at most 8! different poems to verify, this is around 40,000
+
+however, two poems are equivalent in validity if they are the same words in different orders
+
+The number of sets of words is much smaller, 2^8, we can verify each combination and use it to verify poems.
+
+To verify each combination, we'll use a bipartite matching via max flow. Each block can match to every letter corresponding to a letter on the block.
+A block can match with any letter if it contains a '*'
+
+If every character of a candidate string can be matched to a block, the combination is valid.
+
+Test all and count.

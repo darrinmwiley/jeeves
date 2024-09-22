@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/different
+TAGS: IO, I/O, Input, Output, Math, Difference
+EXPLANATION:
+Use 64-bit ints to contain the large input. Use while (cin >> a >> b) as a loop to accept input while it exists.

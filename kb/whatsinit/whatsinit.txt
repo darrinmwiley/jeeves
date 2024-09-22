@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/whatsinit
+TAGS: brute force, memoization
+EXPLANATION:
+the state of a problem can be boiled down to (index, previous amount, current sum).
+the size of the state space is then (1000)*(101)*(101) =~ 10,000,000
+brute force every possible state, and keep track of the min and max feasible amount for each ingredient.

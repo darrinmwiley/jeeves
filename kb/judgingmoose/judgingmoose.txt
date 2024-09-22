@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/judgingmoose
+TAGS: IO, I/O, Input, Output, Cases, Math
+EXPLANATION:
+If l == 0 and r == 0, print "Not a moose". Otherwise, print "Even " when l == r and "Odd " otherwise, followed by 2 * the maximum of l and r.

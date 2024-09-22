@@ -1,0 +1,6 @@
+PROBLEM URL: https://open.kattis.com/problems/treehouses
+TAGS: dsu, mst
+EXPLANATION:
+* Create n+1 disjoint sets, the first n sets will be for the first n treehouses, and the last one will be for the open land
+* Merge the first e trees with the open land
+* Do Krusal MST until all treehouses and the open land are connected 

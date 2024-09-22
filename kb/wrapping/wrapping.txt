@@ -1,0 +1,7 @@
+PROBLEM URL: https://open.kattis.com/problems/wrapping
+TAGS: convex hull, shoelace theorem, trigonometry
+EXPLANATION:
+1/ Evaluate the coordinates of the rectangle after rotation by v degrees
+2/ Use Graham Scan to build a convex hull from the coordinates
+3/ Use Shoelace Theorem to find the area of the convex hull
+4/ Evaluate the fraction between area of rectangle and area of convex hull

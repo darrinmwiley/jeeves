@@ -1,0 +1,15 @@
+PROBLEM URL: https://open.kattis.com/problems/speedlimit2
+TAGS: Tree, DFS, DP
+EXPLANATION:
+
+The main goal for this problem is for all weights to each vertex be equal
+if they do not have a speed limit sign.
+
+DP Cases:
+1. If we make all the weights equal we must check all children for the weights to be equal.
+    - DP_w = SUM {DP_w...}
+2. If we put in a sign, the edges don't have to be of equal weights.
+    - c*deg_v + SUM{best...}
+        where best is the minimum of all dp values of this vertex.
+    For this case we also need to consider changing the weight of the outgoing edge, as
+    it may be beneficial to the next vertex.

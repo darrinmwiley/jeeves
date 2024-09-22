@@ -1,0 +1,17 @@
+PROBLEM URL: open.kattis.com/problems/hardware
+TAGS: Ad-Hoc, Ad Hoc, String, IO, I/O, Input, Output, Input/Output, Digit, Implementation
+EXPLANATION:
+For each test case, first read a line into a dummy string. Both reading the number of test cases and reading the last line of input for a test case
+leaves the cursor at the end of the previous line, so the newline must be consumed. After this, read the current line again as the road name. Then, read
+the number of addresses as an integer and the next word as a string. Call this string A and save it for later. Create an empty list of integers to
+store addresses. While this list has fewer addresses than the number read in earlier, read the first token as a string. If this string is not a plus sign,
+parse it as an integer and add it to the list. Otherwise, read the next three integers (called f, l, and d). In a for loop starting at f, continuing while
+the index is <= l, and incrementing by d, add the current index to the list of addresses. Once the list has length equal to the number of addresses, we
+are done with input and the cursor is in the correct place for the next test case.
+
+Now, create a list of ten numbers called D, initialized to 0, to store the frequency of each digit. For each address, find its value mod 10 (its one's place)
+and increase the frequency of that digit by one. Then, integer-divide the address by 10 (to remove the one's place). Repeat this while the address is not zero.
+Also keep track of the total number of digits T. Initialize T to 0, and whenever you increment an element of D, also increment T.
+
+Print the road name, the number of addresses, and A. Then, for i from 0 to 9, print "Make ", D[i], " digit ", and i. Finally, print "In total ", T, and
+"digits" (or just "digit" if T equals 1).

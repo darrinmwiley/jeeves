@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/movingday
+TAGS: volume, geometry, maximum, long
+EXPLANATION:
+Loops through each box, computing its volume and updating the maximum volume. At the end, prints the maximum
+box volume minus V. Volumes are represented as long longs because they could be up to 2^32 (which would allow
+the use of an unsigned int), but they are also signed (i.e. the result of the subtraction).

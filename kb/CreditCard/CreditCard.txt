@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/creditcard
+TAGS: math, implementation
+EXPLANATION:
+straightforward implementation problem
+make sure to follow the instructions in the correct order and watch out for floating point precision errors

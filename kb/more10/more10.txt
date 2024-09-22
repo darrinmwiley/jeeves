@@ -1,0 +1,4 @@
+PROBLEM URL: https://open.kattis.com/problems/more10
+TAGS:union-find, dsu
+EXPLANATION: Goes through the input statements and merges
+	'rhyming' sets if the 'rhyming' segment is also a word.

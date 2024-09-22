@@ -1,0 +1,9 @@
+PROBLEM URL: open.kattis.com/problems/lava
+TAGS: bfs
+EXPLANATION:
+
+consider the graph of all valid locations as vertices, and moves as edges.
+
+there are at most 1000 white tiles, meaning the number of edges is less than 10^6.
+
+We can BFS out for both the daughter and father's graphs and answer according to their distance to the end tile. 

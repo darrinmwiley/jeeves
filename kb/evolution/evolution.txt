@@ -1,0 +1,9 @@
+PROBLEM URL: https://open.kattis.com/problems/evolution
+TAGS: vectors, sorting
+EXPLANATION:
+Sort input by length and then alphabetical order and attempt to split all the strings into two distinct genetic chains.
+ Processes strings starting from the longest and iterates down the list. Two lists are used for each chain in case
+ two smaller strings may fit into a larger one e.g. {CCMM, ACCA, AA, CC} could produce ACCA->AA || ACCA->CC but CCMM can
+ only produce CCMM -> CC. Index variables i, j, ii, and jj keep track of the number of strings in each vector A, B, C, D
+ respectively. Vectors A and C hold first chain possibilities and vectors B and D hold second chain possibilities.
+ Whichever two add up to n hold the correct chains.

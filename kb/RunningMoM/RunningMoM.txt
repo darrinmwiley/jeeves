@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/runningmom
+TAGS: graph, dfs
+EXPLANATION:
+dfs out, and when you reach an in progress node you know everything on the current path is safe.

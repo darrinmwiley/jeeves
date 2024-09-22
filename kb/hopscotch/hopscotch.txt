@@ -1,0 +1,14 @@
+PROBLEM URL: open.kattis.com/problems/hopscotch
+TAGS: math, ncr, combinatorics, modular inverse
+EXPLANATION:
+separate dimensions into x and y
+
+answer is the sum from i = 1 to n of (x paths of length i)*(y paths of length n)
+
+to count number of paths, use ncr
+
+how many ways to select i numbers that are at least X and sum to N?
+first, allocate all i numbers X to begin with, then do stars and bars to
+allocate the amount left over.
+
+nCr must use modular inverse since it can be a large N

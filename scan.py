@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import requests
-import mysql.connector
 
 begin = "BEGIN ANNOTATION"
 end = "END ANNOTATION"

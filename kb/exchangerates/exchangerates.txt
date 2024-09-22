@@ -1,0 +1,6 @@
+PROBLEM URL: https://open.kattis.com/problems/exchangerates
+TAGS: math
+EXPLANATION: 
+to solve I kept track of the largest amount of US and CAN dollars you can have at the end of any day
+the largest amount of any currency possible on any day is the
+  max (prevMax, exchangeRateOtherToThis * 0.97 * otherCurrencyPrevMax)

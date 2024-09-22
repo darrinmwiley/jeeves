@@ -1,0 +1,7 @@
+PROBLEM URL: open.kattis.com/problems/eligibility
+TAGS: IO, I/O, Input, Output, String, Cases
+EXPLANATION:
+You can use std::setw to read exactly 4 characters to parse the year and exactly 6 characters to a dummy variable
+to skip the month and day. If the post-secondary studies year is >= 2010 or the year of birth is >= 1991, print
+the eligible message; otherwise, if the number of courses is >= 2010, print the ineligible message; otherwise,
+print the coach petition message.

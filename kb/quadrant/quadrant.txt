@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/quadrant
+TAGS: IO, I/O, Input, Output, Cases
+EXPLANATION:
+Simply use nested if-else statements. If y>0, then if x>0, print 1, else print 2. Otherwise, if x<0, print 3, else print 4.

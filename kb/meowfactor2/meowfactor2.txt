@@ -1,0 +1,6 @@
+PROBLEM URL: https://open.kattis.com/problems/meowfactor2
+TAGS: dp, bfs
+EXPLANATION:
+- Generate all permutations of "meow" along with # of operations necessary to convert "meow" to the specific permutation using BFS shortest path
+- For each generated permutation, apply Edit Distance DP between s and the the current permutation
+=> Result will be the most optimal value gained from DP + # of operations needed to convert "meow" to current permutation

@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/abstractart
+TAGS: java, geometry
+EXPLANATION:
+This problem is just finding the area of shapes with potential holes. We can lean on java's geometry library to solve this easily.

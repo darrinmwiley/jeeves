@@ -1,0 +1,18 @@
+PROBLEM URL: https://open.kattis.com/problems/pikemanhard
+TAGS: binary search, sorting, math
+EXPLANATION:
+- Observation #1: Since t[i] is computed by taking an arbitrary number % c, it is possible to say t[i] will never exceeds c and that the sequence of t 
+will eventually repeat at some point
+- Observation #2: The penalty value can be minimized by prioritizing problems that require less time
+- Approach: 
+    + Compute t[i] until either there are n elements or a repeat is found (refer to Observation #1)
+    + Binary search the number of problems that can be solved
+       + For every mid: 
+         + Categorize the problems based on the time it requires, and compute the number of each element in each category
+         + Sort the categories based on the time required in ascending order (Refer to Observation #2)
+         + The total time needed to solved all problems from first category to i-th category can be computed using prefix sum as follow: 
+                + totalTime[i] = totalTime[i-1] + time[i]*(# of element in i-th element)
+         + The penalty of all problems from the first category to the i-th category can be computed as follow: 
+                + (penalty[i] = penalty[i-1] + time[i] * (1 + 2 + ... + # of element in i-th group) + totalTime[i-1] * (# of elements in i-th group)) % (1e9 + 7)
+         + If totalTime[lastCategory] <= t, update max number of problems and the penalty, and move the bound up
+         + Else move the bound down

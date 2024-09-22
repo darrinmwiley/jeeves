@@ -1,0 +1,4 @@
+PROBLEM URL: https://open.kattis.com/problems/draughts
+TAGS: brute_force
+EXPLANATION:
+Basically just iterates through each white piece and tries to capture in each direction. It compares the number of possible captures each route it takes to find the greatest amount of captures possible.

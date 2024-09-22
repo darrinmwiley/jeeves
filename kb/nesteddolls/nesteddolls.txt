@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/nesteddolls
+TAGS: sorting, dp, LIS
+EXPLANATION:
+the answer is the largest set of dolls where none of them fit each other. 
+You know this set will be pareto optimal, so the problem becomes finding the largest pareto optimal set.
+to do so, sort by one dimension and then find the longest increasing subsequence (in nlogn) of the resulting sort.

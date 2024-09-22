@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/maxflow
+TAGS: max flow
+EXPLANATION:
+this is straightforward maxflow.
+This solution can serve as a reference for a clean c++ implementation of Edmunds-Karp using edge structs.
+Motivation behind struct for edges is memory efficiency in sparse graphs.

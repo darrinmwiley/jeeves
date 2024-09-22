@@ -1,0 +1,13 @@
+PROBLEM URL: open.kattis.com/problems/bagoftiles
+TAGS: meet-in-middle, math, ncr
+EXPLANATION:
+1) 	split into two roughly equal groups and permute all possible subsets of each group. 
+	Since there are at most 30 tiles, there will be at most 2^15 (~65,000) subsets for each group. 
+
+2)	group subsets into equivalence classes by the combination of (sum, #tiles used). 
+
+3)	sort one half of the subset EQ classes, and iterate through the other. 
+
+4)	For each subset EQ class, binary search for a complimentary EQ class from the sorted list
+
+5)	Use nCr and subtraction to figure out the number of losing configurations after counting the winning ones

@@ -1,0 +1,9 @@
+PROBLEM URL: https://open.kattis.com/problems/punctiliouscruciverbalist
+TAGS: implementation
+EXPLANATION:
+- Find all clues that need to be solved
+- While there are still clues remaining
+    + Traverse through the remaining clue, if the clue is solved, do nothing, else update its rank
+    + Among all unsolved clues, find the next clue based on given criteria, "solve" it, and add it to answer list
+- Print the answer list 
+* Since the grid is 50x50 at most, the above solution will always be within the time limit

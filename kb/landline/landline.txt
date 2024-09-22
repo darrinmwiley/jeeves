@@ -1,0 +1,13 @@
+PROBLEM URL: https://open.kattis.com/problems/landline
+TAGS: mst, dsu
+EXPLANATION:
+- Observation #1: if the system is represented as a tree, then all insecure buildings has to be leaves of that tree
+=> Approach: 
+- Build MST from secure buildings
+- For each insecure buildings, connect it with the closest secure building (if any)
+- If all buildings are not connected in the end, then the result will be "impossible"
+- Else, the result will be the total cost
+
+* Some edge cases to consider: 
+- n = 1 => distance is 0 regardless of secure status
+- n = 2 => if there is a direct between the 2 nodes, it is possible to make such connections (regardless whether they are secure or not)

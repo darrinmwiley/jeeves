@@ -1,0 +1,13 @@
+PROBLEM URL: https://open.kattis.com/problems/alliswell
+TAGS: dijkstra
+EXPLANATION:
+1/ If grid[0][0] is occupied by a person, then return -1
+2/ Start from (0, 0), do sparse Dijkstra on the whole graph
+3/ For each cell, if it is possible to yell to person A's position, save it for the next Dijkstra, else set it to uninitialized
+4/ For each person from 'B' to the last person:
+*   4.1/ Start Dijkstra with the distance and position of the cells that are saved in the previous Dijkstra 
+*   (e.g: If the current person is B, then Dijkstra will be started with cells that can reach A)
+*   4.2/ Repeat step 3 for the current person
+* 
+* Note: If there is no way to reach any person, return -1
+* 

@@ -1,0 +1,5 @@
+PROBLEM URL: https://open.kattis.com/problems/virtualfriends
+TAGS:union-find
+EXPLANATION: Goes through input to note the names and matches them to indexes.
+* 				Then goes through again to merge friends and uses rank to 
+* 				tell size of network

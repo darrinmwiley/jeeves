@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/lastfactorialdigit
+TAGS: trivial
+EXPLANATION:
+if input is more than 5, print zero. Otherwise calculate

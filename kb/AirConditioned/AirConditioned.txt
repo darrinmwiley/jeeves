@@ -1,0 +1,3 @@
+PROBLEM URL: open.kattis.com/problems/AirConditioned
+TAGS: sort, sweep
+EXPLANATION: Sort end-points and cover intervals at latest point in time.

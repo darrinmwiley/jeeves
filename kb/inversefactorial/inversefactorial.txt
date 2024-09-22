@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/inversefactorial
+TAGS: number theory, approximation, binary search, factorial, logarithm, digits, string
+EXPLANATION:
+Binary search over the number of digits. For a given n, use the logarithm of Stirling's Approximation
+to compute the number of digits in n!. Hardcode all values of n < 7, as the number of digits there will
+be repeated.

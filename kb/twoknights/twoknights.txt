@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/twoknights
+TAGS: dfs, implementation
+EXPLANATION:
+you can encode your state to a tuple (r1, c1, r2, c2, index), representing the locations of the two knights and how much of the poem you have already typed.
+state size is 10*10*4*4*100 = 160,000. This is feasible.
+If you can code the transition function cleanly, the problem is just a DFS implementation.

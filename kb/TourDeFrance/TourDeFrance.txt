@@ -1,0 +1,5 @@
+PROBLEM URL: https://open.kattis.com/problems/tourdefrance
+TAGS: implementation
+EXPLANATION:
+- This problem can be solved by finding the ratio of all possible combination of front and rear
+- Sort all the generated ratios and the answer will be max(ratio[i] / ratio[i-1]) for all valid i

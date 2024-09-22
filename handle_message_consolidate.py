@@ -6,12 +6,12 @@ async def handle_message_consolidate(message, client):
     parser = argparse.ArgumentParser(prog='consolidate', usage='consolidate two tags')
     parser.add_argument('-a', '--child', nargs='?', help='child tag')
     parser.add_argument('-b', '--parent', nargs='?', help='parent tag')
-    help = "-h" in message.content;
+    help = "-h" in message.content
     response = ""
     if help:
         output = io.StringIO()
         parser.print_help(output)
-        response += output.getvalue() + "\n\n";
+        response += output.getvalue() + "\n\n"
         await send_message(message.channel, response)
         return;
     user = get_user_from_author(message.author)

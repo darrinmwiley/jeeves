@@ -1,0 +1,8 @@
+PROBLEM URL: open.kattis.com/problems/fizzbuzz
+TAGS: FizzBuzz, Fizz, Buzz
+EXPLANATION:
+Read X, Y and N
+Make for loop starting from 1 to N
+Check if reminder of i / X and i / Y == 0
+Output FizzBuzz, Fizz, or Buzz
+If i is not divisible by X or Y, display i

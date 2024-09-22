@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/spiral
+TAGS: bfs, sieve, implementation
+EXPLANATION:
+to create the spiral, follow a pattern of right, up, left, down where you increase your step count by 1 every 2 directions
+use a sieve to find out which numbers are prime, and then just implement bfs between numbers.
+to be safe I generated far more grid than needed

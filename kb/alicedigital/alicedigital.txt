@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/alicedigital
+TAGS: brute force
+EXPLANATION:
+test every occurrence of m, expanding out until you find another. 
+This runs in linear time because each value will be touched at most 2 times, once by the m value to the left and right of itself.

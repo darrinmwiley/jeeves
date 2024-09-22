@@ -1,0 +1,4 @@
+ * PROBLEM URL: open.kattis.com/problems/ballsandneedles
+ * TAGS: bfs
+ * EXPLANATION:
+ * bfs the 3d sculpture, then bfs the 2d shadow

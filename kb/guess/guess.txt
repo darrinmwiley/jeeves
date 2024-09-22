@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/guess
+TAGS: easy, interactive
+EXPLANATION:
+interactive binary search

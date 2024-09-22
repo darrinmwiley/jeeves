@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/everywhere
+TAGS: set, string, test case
+EXPLANATION:
+Run a for loop over [0, T) for the test cases. Inside, create an empty hashset of strings.
+Run a for loop over [0, n) to read in each name as a string and insert it in the set. Then
+output the set's size.

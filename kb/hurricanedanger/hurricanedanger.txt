@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/hurricanedanger
+TAGS: geometry
+EXPLANATION:
+The distance from a point (x, y) to a line defined by (x1, y1, x2, y2) is equal to |(y2 - y1)*x - (x2 - x1)*y + x2*y1 - y2*x1|/sqrt((y2-y1)^2 + (x2-x1)^2)
+Since x1,y1,x2,y2 are constant, we can remove the denominator of the fraction. This way we use only multiplication and avoid precision error.
+Keep a variable keeping track of the shortest distance seen so far, and a list of all names that have that distance. When you find a new best, clear the list and add the new winner.

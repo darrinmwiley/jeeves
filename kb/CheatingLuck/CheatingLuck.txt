@@ -1,0 +1,10 @@
+PROBLEM URL: open.kattis.com/problems/cheatingluck
+TAGS: dp, game
+EXPLANATION:
+for any given (n,k), there is a threshold at which it becomes 
+profitable for gladstone to win instead of lose. 
+
+additionally, any given (m,n,k) will have an optimal betting amount which is
+at least as much as the optimal bet for (m-1,n,k).
+
+you can use these two properties to reduce the branching factor of DP

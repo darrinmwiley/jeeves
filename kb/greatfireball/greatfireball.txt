@@ -1,0 +1,18 @@
+PROBLEM URL: open.kattis.com/problems/greatfireball
+TAGS: sweep, geometry, binary search
+EXPLANATION:
+The first observation is the problem is monotonic. There exist some R where any radius >= R is valid and any radius <= R is invalid.
+
+Due to this, we can binary search for this radius, simplifying the problem.
+
+The problem becomes:
+
+can you create a circle of radius R touching the origin and covering at least K points?
+
+For this we will place the circle tangentially touching the origin and perform a radial sweep. 
+For every point that can be covered, there are two critical angles where the circle will start and stop covering the point. 
+We can sort these critical angles and sweep through them to keep track of the maximum number of points that can be covered at the same time.
+
+After sweeping we can know the maximum number of points a certain radius circle can cover, and then we can binary search with this information to solve the original problem. 
+
+Runtime Nlog^2N

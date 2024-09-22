@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/buka
+TAGS: BigInteger, arbitrary precision
+EXPLANATION:
+basic arbitrary precision problem

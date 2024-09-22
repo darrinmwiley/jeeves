@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/marblestree
+TAGS: dfs, tree
+EXPLANATION:
+the only reason a marble should traverse an edge is if there is an imbalance between the two sides of the tree.
+Another way of saying this is subtree size != number of marbles on a subtree.
+hence the answer will be sum(abs(subtree size - subtree marbles)) over all vertices

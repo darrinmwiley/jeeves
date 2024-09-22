@@ -1,0 +1,9 @@
+PROBLEM URL: open.kattis.com/problems/squarepegs
+TAGS: math, geometry, greedy
+EXPLANATION:
+first, we can convert this problem into only using circles.
+A square will fit into a plot iff its circumscribed circle does as well.
+
+After the problem is all circles, we can greedily fill each plot with the largest applicable house. 
+
+This is provably correct via replacement argument.

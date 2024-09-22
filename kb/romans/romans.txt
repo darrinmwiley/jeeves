@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/romans
+TAGS: IO, I/O, Input, Output, Math
+EXPLANATION:
+First, multiply by the given factor. Then, add 0.5 and cast to an int to round to the correct value.

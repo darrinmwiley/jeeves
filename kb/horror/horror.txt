@@ -1,0 +1,9 @@
+PROBLEM URL: open.kattis.com/problems/horror
+TAGS: graph, bfs, breadth, breadth first search
+EXPLANATION:
+Do breadth first search starting with all movies on the horror list.
+Nodes are movies, edges are between similar movies, all edge weights
+re 1, and distances are horror indices. Store the accumulated distance
+to each movie, with a large value being the default distance. Then,
+iterate through the list of nodes and output the first ID with the
+largest horror index.

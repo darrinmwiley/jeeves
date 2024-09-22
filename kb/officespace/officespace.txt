@@ -1,0 +1,6 @@
+PROBLEM URL: https://open.kattis.com/problems/officespace
+TAGS: brute-force
+EXPLANATION: The problem only allows for 10 test cases, each limited 
+	to 20 employees in a 100x100 grid. There is no need for any fancy 
+	algorithms or optimizations. Simply	labeling a matrix with the
+	employee names and then	counting up the names will suffice. 

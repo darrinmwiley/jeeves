@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/tictactoe2
+TAGS:brute force, simulation
+EXPLANATION:there are at most 3^9 (~2000) games, so we can just brute force them all. 
+Simulate every possible way to play the game, adding each game state to a structure as you go.
+Then you can simply query the structure.

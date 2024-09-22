@@ -1,0 +1,23 @@
+PROBLEM URL: open.kattis.com/problems/divideandconquer
+TAGS: java, modular arithmetic, math, factorization
+EXPLANATION:
+An alternating-sign divisibility hack works iff b^m = -1 mod d
+
+resource on divisibility hacks to understand this conclusion:
+
+http://webspace.ship.edu/msrenault/divisibility/StupidDivisibilityTricks.pdf
+
+so the problem becomes: find an m such that b^m = -1 mod d
+
+suppose such an m exists. If b^m = -1 mod d, then b^2m = (b^m)(b^m) = (-1)(-1) = 1 mod d
+
+since d is prime, you can apply Fermat's little theorem to say b^m = b^(d-1) mod d
+
+"As a consequence of Lagrange's theorem, ord_n(a) always divides φ(n)" (https://en.wikipedia.org/wiki/Multiplicative_order)
+
+by Lagrange's theorem, we know that the mutiplicative order of b divides d-1. 
+
+From this we know that 2m divides d-1, so m must also divide d-1.
+
+From here we can prime factorize d-1 in n^.25 using Pollard's Rho algorithm, permute factors, and then check each one by hand using modular exponentiation. 
+

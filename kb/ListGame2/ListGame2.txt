@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/listgame2
+TAGS: knapsack, factorization
+EXPLANATION:
+simplify the problem by taking one of each prime, and then do knapsack on prime factors

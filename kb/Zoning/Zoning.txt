@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/zoning
+TAGS: bfs
+EXPLANATION:
+This is a standard shortest path problem on a grid

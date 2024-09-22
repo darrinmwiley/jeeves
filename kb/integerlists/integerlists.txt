@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/integerlists
+TAGS: list
+EXPLANATION:
+don't actually reverse the list, just maintain a flag to tell which end to remove from, and print them in the correct order depending on the flag after.

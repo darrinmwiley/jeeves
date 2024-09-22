@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/r2
+TAGS: input, output, math
+EXPLANATION:
+Calculate r2 = 2 * s - r1.

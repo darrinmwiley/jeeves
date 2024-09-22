@@ -1,0 +1,6 @@
+PROBLEM URL: open.kattis.com/problems/importspaghetti
+TAGS: graph, bfs
+EXPLANATION:
+model every file as a vertex of a graph, and each dependency as a directed edge.
+
+for each vertex v, find the shortest nontrivial path from v->v, and report the smallest one if it exists

@@ -1,0 +1,11 @@
+PROBLEM URL: https://open.kattis.com/problems/pagelayout
+TAGS: backtracking
+EXPLANATION:
+- Represent the problem as a graph in which a vertex represents a story and an edge between 2 vertices means that 2 stories 
+will overlap if both are included in the paper. Each vertex will have a value that corresponds to the story's area
+
+=> Such representation boils the problem down to the following: 
+  Given a graph, find a way to color some vertices such that no 2 colored vertices share the same edge and 
+that the sum of values associated with the colored vertices is maximized 
+
+=> It can be seen that this is a variant of the Graph Coloring problem, thus can be solved using backtracking  

@@ -1,0 +1,21 @@
+PROBLEM URL: open.kattis.com/problems/companypicnic
+TAGS: DFS, Depth First Search, DP, Dynamic Programming, Tree, Graph, Tree DP, Tree Dynamic Programming
+EXPLANATION:
+First, generate a tree from the input rooted at the CEO. For each node in depth-first order, we can compute the following information:
+1) The optimal result for the subtree rooted at the node, assuming the node is not the higher-ranking member of a team
+2) The optimal result for the subtree rooted at the node with no restricitons
+
+For both cases, we compute a pair consisting of the number of teams formed and the total speed of all teams. A pair is more optimal if is greater lexicographically.
+
+For case (1), we simply add case (2) for the subtrees rooted at all children. (If there are no children, the result is trivially (0, 0.0).) This is because if the
+current node is not the higher-ranking member of a team, its children are not the lower-ranking member of a team, so there is no restriction on whether or not they
+can be the higher-ranking member of a team.
+
+For case (2), there are several options; the optimal result is the maximum of them. The first option is to simply not be a member of the higher-ranking team, which
+is just case (1). If the node is a leaf, this is the only option. Otherwise, for each child, there is the option to form a team with the current node and that child.
+This can be computed from the result of case (1). First, subtract the child's case (2) and add its case (1). This correpsonds to the fact that the child cannot be
+the higher-ranking member of a team, as it is already the lower-ranking member of a team. Then, add 1 to the number of teams and the minimum speed of the current node
+and the current child to the total speed.
+
+The overal answer is case (2) for the ceo. This algorithm runs in linear time because there is a constant amount of work done per node (charging the computation of
+case (2) to the child nodes).

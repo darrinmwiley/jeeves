@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/chanukah
+TAGS: easy, math
+EXPLANATION:
+Number of candles required for x days is (((x+1)*x)/2+x)

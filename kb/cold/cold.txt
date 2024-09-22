@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/cold
+TAGS: trivial, array
+EXPLANATION:
+count the number of elements less than zero

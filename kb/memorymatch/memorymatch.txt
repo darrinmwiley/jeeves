@@ -1,0 +1,8 @@
+PROBLEM URL: open.kattis.com/problems/memorymatch
+TAGS: casework
+EXPLANATION:
+the problem falls into 3 possible cases.
+
+1) you've seen at least 1 of every card type, in this case you can flip them all
+2) you've seen both of all but one card type, in this case you can flip them all
+3) in any other case, you can only flip cards that you've seen both locations for

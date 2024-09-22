@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/howl
+TAGS: trivial
+EXPLANATION:
+appending the letter O to any valid howl will create a longer howl that is still valid.

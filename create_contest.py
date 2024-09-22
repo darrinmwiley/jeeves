@@ -24,7 +24,7 @@ KATTIS_PASS = os.getenv('KATTIS_PASS')
 async def create_contest(name, year, month, day, hour, minute, second, duration_seconds, problems, channel):
     progress = make_progress(1,3)
     response = await send_message(channel, "creating new contest\n"+progress)
-    driver = webdriver.PhantomJS()
+    driver = webdriver.Chrome()
     #driver = webdriver.Firefox()
     driver.get('http://open.kattis.com/login/email?')
     username = driver.find_element_by_name("user")

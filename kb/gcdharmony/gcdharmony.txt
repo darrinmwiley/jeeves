@@ -1,0 +1,7 @@
+PROBLEM URL: https://open.kattis.com/problems/gcdharmony
+TAGS: graph, dp
+EXPLANATION: Choose a root node with degree one and visit nodes of the tree from the bottom up. Using dp to store results,
+find the cost of maintaining gcd harmony in a subtree and changing its root node to a value v for all v between [1,10000]
+and composed of primes between [1,100] by adding the cost of its children and changing the chosen node's value. The costs
+found for a subtree of for value v can be used in a minimum between other values that also contain a common prime factor of v
+in calculating the parent's cost.

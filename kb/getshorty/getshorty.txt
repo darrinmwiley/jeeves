@@ -1,0 +1,6 @@
+PROBLEM URL: https://open.kattis.com/problems/getshorty
+TAGS: graph theory, shortest path
+EXPLANATION:
+* This is a straight-forward implementation of Dijkstra's Algorithm
+* The graph will have the intersections as vertices and corridor as edges
+* => The problem becomes finding the path with max weight (weight being calculated by taking product of all edge weights)

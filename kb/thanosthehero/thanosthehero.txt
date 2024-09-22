@@ -1,0 +1,7 @@
+PROBLEM URL: open.kattis.com/problems/thanosthehero
+TAGS: Loops, array
+EXPLANATION:
+Creates a list with all of the worlds and iterates
+backwards, adding to kills the number that must be taken from
+the current index to make it less than the next world,
+if the next world is ever equal to zero, break the loop and output 1

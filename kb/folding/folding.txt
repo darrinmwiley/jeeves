@@ -1,0 +1,14 @@
+PROBLEM URL: https://open.kattis.com/problems/folding
+TAGS: Graph Theory
+EXPLANATION:
+We turn each sheet of paper into a line segment. At the end, we want these
+line segments stacked so that the segment for 1 is on top, then 2, etc. Visualization:
++------1-------+
++------2-------+
++------3-------+
++------4-------+
+We can think of folds as an edge between two left or two right endpoints of these line segments.
+To solve the problem, we need only find out if our folds cross each other. You can test this yourself on 41325(NO), 31542(YES), 1324(NO)
+Our folds can be thought of as line segments belonging either to the left or to the right. 
+It's sufficient that these line segments don't intersect (for the folds to not cross)
+Efficiency determining this is up to the reader but you can reference what I did below

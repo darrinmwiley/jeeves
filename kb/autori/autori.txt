@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/autori
+TAGS: trivial
+EXPLANATION:
+split by dashes, print first character of each string

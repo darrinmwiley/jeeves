@@ -1,0 +1,10 @@
+PROBLEM URL: open.kattis.com/problems/excursion
+TAGS: implementation
+EXPLANATION:
+- If the string is treated as an array of numbers, we can see that 
+the problem requires us to count number of inversions in the array, meaning the number of pairs (i, j) in which i < j and a[i] > a[j]
+- Approach:
+    + For each element in the array: 
+        The number of inversion in respect to the current element is the number of elements that were encountered in previous iterations that are greater
+    than the current element
+- Caution: Use long or long long to prevent overflow

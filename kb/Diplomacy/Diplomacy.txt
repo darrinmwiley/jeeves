@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/diplomacy
+TAGS: bfs, graph diameter
+EXPLANATION:
+The answer to this problem is equivalent to the diameter of the graph, where the cost of traversing an edge is 1 iff the edge has two different colored nodes.
+You can calculate this in an inelegant way by BFS'ing out from every possible middle node, which runs in V^3 time worst case

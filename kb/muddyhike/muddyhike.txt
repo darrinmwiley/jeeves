@@ -1,0 +1,9 @@
+PROBLEM URL: open.kattis.com/problems/muddyhike
+TAGS: bellman ford
+EXPLANATION:
+
+PROBLEM URL: open.kattis.com/problems/muddyhike
+TAGS: dijkstra
+EXPLANATION:
+standard dijkstra's algorithm
+instead of adding to successor state cost, you set cost to the maximum of currentCost and next depth.

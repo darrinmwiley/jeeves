@@ -1,0 +1,14 @@
+PROBLEM URL: https://open.kattis.com/problems/kinversions
+TAGS: FFT
+EXPLANATION: 
+* You can represent the string as two polynomials for B and A
+* If a character is B, let that be a term in B's polynomial, and vice versa
+* Let the powers for the B polynomial increase from the left, and from the right for A
+* Example - BABA ==> B_B_ ==> (x^3 + 0 + x + 0)
+*                ==> _A_A ==> (0 + x + 0 + x^3)
+* 
+* We see that when we multiply the polynomials, terms the same distance apart
+* in the string get added to the same term. More exactly x^(N-1+i) is the number
+* of pairs distance i apart.
+* 
+* FFT is used to efficiently multiply polynomials

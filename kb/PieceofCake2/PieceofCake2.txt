@@ -1,0 +1,4 @@
+PROBLEM URL: https://open.kattis.com/problems/pieceofcake2
+TAGS: math
+EXPLANATION:
+simple

@@ -1,0 +1,15 @@
+PROBLEM URL: open.kattis.com/problems/cardiology
+TAGS: math, graph, dfs
+EXPLANATION:
+
+Observation 1: For a given candidate P, there is a contiguous region of size R that any location will move to next from index PR to (P+1)R - 1. This touches at most (R/C)+1 rows
+
+Observation 2: for a given candidate P, card (r,c) will move to ((PR + r) / C, (PR + r) % C). Notice how this is not dependent on c at all. Hence any element from the same row will
+behave the same. 
+
+For every possible P, build a graph where each of the ~(R/C) relevant rows are represented by a node, and there is an edge between U and V if U transitions to V.
+
+DFS to find the stable location each node leads to and the maximum number of hops and take the best one. 
+
+C potential choices of P, graph of size R/C for each test, overall O(R) runtime.
+

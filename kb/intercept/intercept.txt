@@ -1,0 +1,24 @@
+PROBLEM URL: open.kattis.com/problems/intercept
+TAGS: dijkstra, math, dfs
+EXPLANATION:
+First, run dijkstras algorithm to determine the fastest path from source to sink
+
+Next, we will count the number of fastest paths coming out and going into each node
+
+sort nodes by their fastest path from the source. 
+
+Source has one fastest path coming in
+the number of fastest paths coming into a node x is equal to the sum of fastest paths coming into all predecessors, such that pred's fastest path + edge weight from pred to x = x's fastest path
+calculating these in order of fastest path will ensure dependencies are calculated first.
+
+Sink has one fastest path coming out
+the number of fastest paths coming out of a node x is equal to the sum of fastest paths coming out of all successors, such that x's fastest path + edge weight from x to successor = fastest path
+calculating these in reverse order of fastest path will ensure dependencies are calculated first.
+
+The total number of fastest paths through a node is the product of those coming in and those going out. Keep in mind this can grow very large very quickly.
+I calculated number of paths modulo a large prime to avoid overflow. This is prone to collisions but that is unlikely.
+
+another way of solving this problem:
+
+remove all edges that are not part of a fastest path, and then find all articulation points
+

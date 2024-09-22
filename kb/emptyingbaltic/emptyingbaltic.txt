@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/emptyingbaltic
+TAGS: graph, dijkstra
+EXPLANATION:
+the amount of water left in a square after draining is equal to the lowest highest depth on any path from the square to the drain.
+use a process similar to dijkstra's algorithm to find this lowest highest value for each location (do this from drain outward to only have to perform one dijkstra)

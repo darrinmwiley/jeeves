@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/cetvrta
+TAGS: easy, xor
+EXPLANATION:
+xor all X and all Y to get the missing X and Y. This is because two are guaranteed to match and they will xor each other out.

@@ -1,0 +1,9 @@
+PROBLEM URL: open.kattis.com/problems/tourists
+TAGS: graph, tree, sparse table, LCA, harmonic
+EXPLANATION:
+notice since the graph is connected and there are n-1 edges, it must be a tree.
+also notice that due to sum of a harmonic series, the number of (N, N*K) pairs in the graph is O(NlogN)
+We can sum the distance between each of these NlogN pairs as you know the path between two nodes in a tree goes through their lowest common ancestor
+this LCA can be calculated in log(N) time with NlogN precomputation with binary lifting
+https://www.geeksforgeeks.org/lca-in-a-tree-using-binary-lifting-technique/
+overall runtime Nlog^2(N)

@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/mallmania
+TAGS: bfs
+EXPLANATION:
+all vertices of mall one are sources, and all vertices of mall two are are destinations. Run a multisource BFS and terminate when you find the first sink.

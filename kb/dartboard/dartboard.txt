@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/dartboard
+TAGS: math, calculus, geometry
+EXPLANATION:
+for each ring, integrate over the length of the ring f(dist) * area to calculate the total probability of hitting it, then multiply by the average score of that ring.
+I wasn't good enough at calculus so I just used Reimann sums with very small step size.

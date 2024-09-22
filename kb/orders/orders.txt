@@ -1,0 +1,15 @@
+PROBLEM URL: open.kattis.com/problems/orders
+TAGS: dp, knapsack
+EXPLANATION:
+
+run a modified knapsack where instead of storing cost, you store the number of ways to make that amount.
+
+0 = zero ways
+1 = one way
+2 = more than one way (we only care if it is ambiguous or not)
+
+dp[i][j] = min(2, dp[i-1][j] + dp[i][j-cost[i]])
+
+After this, trace back through the dp matrix to reproduce the sequence if it is possible and unambiguous.
+If dp[i][j] == dp[i-1][j], you know you did not use the previous item. Otherwise you know you did.
+

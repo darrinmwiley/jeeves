@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/qaly
+TAGS: math, sum, input, output
+EXPLANATION:
+Make a floating point variable called sum set to zero. Loop over [0, N), adding Q * y to sum each time. Print sum.

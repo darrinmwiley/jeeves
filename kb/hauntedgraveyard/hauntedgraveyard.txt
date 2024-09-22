@@ -1,0 +1,11 @@
+PROBLEM URL: open.kattis.com/problems/hauntedgraveyard
+TAGS: bellman ford
+EXPLANATION:
+bellman ford with a few tricky edge cases
+
+1) if one portal leaves you in a new portal space, you must take that immediately. This can be accomplished by not creating edges outgoing from any portal square
+2) if you reach the exit, you exit immediately. This is accomplished by not creating edges coming out of the exit square
+3) don't create edges going in or out of tombstone squares
+4) do create edges between any two adjacent squares who don't satisfy any of the above conditions.
+5) when doing bellman ford, make sure not to update a square if it's not reachable yet. This ensures that if an unreachable negative weight cycle exists you will still get the correct answer.
+

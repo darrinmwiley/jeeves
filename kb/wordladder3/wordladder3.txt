@@ -1,0 +1,5 @@
+PROBLEM URL: https://open.kattis.com/problems/wordladder3
+TAGS: partitions
+EXPLANATION:
+Partition a string of a's into pairs and change them like incrementing a 5 digit base 26 number. Changing a pair from one state is two steps and can be cut off.
+There are 26^4 * 2 words at most in the ladder this way

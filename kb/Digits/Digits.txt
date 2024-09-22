@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/digits
+TAGS: implementation, math
+EXPLANATION:
+the series converges very quickly, so you can naively check. 
+edge cases of 0, 1, and very large values that you can't parse (just take length instead)

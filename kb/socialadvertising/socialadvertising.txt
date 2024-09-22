@@ -1,0 +1,8 @@
+PROBLEM URL: https://open.kattis.com/problems/socialadvertising
+TAGS: bitmask, brute-force
+EXPLANATION:
+- Scan through all possible combinations of people using bitmasks
+  + If a person is included in the mask, mark that person and their friends as seen the ad
+  + The final result will be minimum number of people included in the mask for all masks in which everyone can see the ad
+- Time complexity for the above solution will be O(t*n*(2^n)) (n is number of friends, and t is number of test cases)
+=> Max number of operations will be 10*20*(2^20) = 209,715,200 operations (which is possible in 1 second)

@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/bijele
+TAGS: trivial
+EXPLANATION:
+for each index, print the difference between actual and desired.

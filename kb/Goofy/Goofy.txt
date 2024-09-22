@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/goofy
+TAGS: geometry
+EXPLANATION:
+Pen and paper helps.
+Trig, Pythagorean Theorem, and coordinate geometry.

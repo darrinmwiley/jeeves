@@ -1,0 +1,24 @@
+PROBLEM URL: open.kattis.com/problems/johnny5
+TAGS: BFS
+EXPLANATION:
+there are a certain number of interesting locations*times. All others we can disregard.
+
+Interesting locations*time pairs are 
+
+1) the beginning spot at time 0
+2) all oil can spots at the time oil cans appear
+3) all spaces adjacent to oil can spots at the time oil cans appear
+
+each interesting location*time has a certain energy profit and a certain point profit.
+
+your complete state is encompassed by (interesting location*time id, energy left, profit)
+
+bfs over the entire state space, keeping track of the largest profit achieved for each (location*time, energy) tuple encountered.
+use pruning to eliminate suboptimal states.
+
+The answer is the maximum profit of all states.
+
+There are at most 500 interesting location*times, and any energy over ~100 is wasted (there are only 100 timesteps),
+ so we only consider energy values of up to 100.
+ 
+hence state space is (500*100)

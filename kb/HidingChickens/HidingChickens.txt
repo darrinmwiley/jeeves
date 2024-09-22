@@ -1,0 +1,14 @@
+PROBLEM URL: open.kattis.com/problems/hidingchickens
+TAGS: dp, hashing
+EXPLANATION:
+Because the fox can only hold 2 chickens at a time, there are O(n^2) unique "moves" that can be made
+
+I consider a move as a roundtrip from the roost to some number (1 or 2) of hiding spots and back.
+
+Also take note that after hiding the last chicken, the fox does not have to return to the coop, so special moves exist for this situation.
+
+We want to find the minimum cost subset of moves that is mutually exclusive and collectively exhaustive of all the hiding spots.
+
+I used a 1d DP to do this, where each bit in the binary representation of the DP index represented whether or not that hiding place had been filled.
+
+To ensure the last move happened last, I ran through the DP twice, once with the non-last variants of each move, and then with the last variants.

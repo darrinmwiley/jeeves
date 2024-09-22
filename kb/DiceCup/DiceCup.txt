@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/dicecup
+TAGS: easy, counting
+EXPLANATION:
+1) you could count every possible combination and then print the largest ones
+2) you could also figure out that the answer is always every number from min+1 to max+1

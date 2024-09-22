@@ -1,0 +1,11 @@
+PROBLEM URL: https://open.kattis.com/problems/pebblesolitaire2
+TAGS: memoization, dynamic programming
+EXPLANATION:
+Observation: 
+- It can be seen that the board state can be represented as binary representation of an integer
+
+Approach: 
+- Let the current board state be represented by an integer currState
+=> For every moves that can be made, computed the next state and recursively solve the next state
+=> Recurrence relation: 
+f(currState) = min(Integer.bitCount(currState), f(nextState)) for all nextState

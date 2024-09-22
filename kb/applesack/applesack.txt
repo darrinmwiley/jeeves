@@ -1,0 +1,8 @@
+PROBLEM URL: open.kattis.com/problems/applesack
+TAGS: math, observation
+EXPLANATION:
+once you transfer as many apples past the first gate as possible, the induced subproblem is identical.
+
+the problem becomes repeatedly transferring as many apples to location i+1 as possible until you have no apples left. 
+
+After this, print location + 1 as this is the gate you would be stopped at.

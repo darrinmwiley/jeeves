@@ -1,0 +1,11 @@
+PROBLEM URL: open.kattis.com/problems/goodcoalition
+TAGS: math, dp
+EXPLANATION:
+let dp[i] = the log probability of success for the best possible coalition of i people.
+We use log probability for a few reasons. 
+First, it avoids precision loss due to underflow
+Second, it makes the problem almost identical to single use coins dp to find the minimum number of coins used to make a certain amount, the only difference being that you are maximizing instead of minimizing.
+
+dp[i] = argmax(dp[i-x] + ln(y)) over all parties where x is the number of people and y is their probability of success
+
+the answer to the problem is argmax(e^(dp[i])) where 75 < i <= 150 (the majority coalition with highest probability of success) 

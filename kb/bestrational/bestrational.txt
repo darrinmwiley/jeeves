@@ -1,0 +1,11 @@
+PROBLEM URL: https://open.kattis.com/problems/bestrational
+TAGS: math, binary search
+EXPLANATION: 
+* To solve this I used the Farey sequence
+* https://en.wikipedia.org/wiki/Farey_sequence
+* 
+* The Farey sequence of order n is the ordered list of all rational a/b such that b <= n
+* One property of these is that if a/b, p/q, and c/d are consecutive in a sequence of any order,
+* then p/q = (a+c)/(b+d). This allows us to do a sort of binary search over rational fractions.
+* Everything else is math to compare rational numbers. I needed int128 and I don't know if
+* there is a solution without it.

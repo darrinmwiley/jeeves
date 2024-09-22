@@ -1,0 +1,10 @@
+PROBLEM URL: https://open.kattis.com/problems/barcode
+TAGS: combinations, modulus
+EXPLANATION:
+The number of barcodes without consecutive blue bars with size n can be found by adding the twice the number of nonconsecutive barcodes ending with red of size n-1 and barcodes ending with blue of size n-1
+ This sequence fits the fibonacci sequence, where there is 2 possible barcodes at n=1 and 3 possible barcodes at n=2
+ The number of barcodes with equal number of red and blue bars can only be found for barcodes of even size and is n choose n/2
+ This is since there is n*n-1*n-2...n/2+1 spots to place blue barcodes and n/2*n/2-1*n/2-2...1 equivalent placements (There are n/2*n/2-1...1 spots for red barcodes but also n/2*n/2-1...1 equivalent placements)
+ The calculation of n choose n/2 can be simplified in which evens in the numerator simplify into 2, the prime m can be divided out, and the mod inverse of the remaining denominator can be found ^m-2 since m is prime
+ If the numerator contains more factors of m than the denominator, the solution is zero
+ If the size is even, there are n/2+1 overlaps since the extra red bar can be placed in n/2+1 positions when both rules are true

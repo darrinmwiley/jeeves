@@ -1,0 +1,5 @@
+PROBLEM URL: open.kattis.com/problems/oceancurrents
+TAGS: dijkstra
+EXPLANATION:
+run repeated dijkstra for all n trips.
+You can use directional matrices to make movement and cost calculation much easier.

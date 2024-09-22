@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/tarifa
+TAGS: IO, I/O, Input, Output, Math
+EXPLANATION:
+The answer can be found by subtracting each P_i from X * (N + 1).

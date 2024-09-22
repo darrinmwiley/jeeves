@@ -1,0 +1,8 @@
+PROBLEM URL: https://open.kattis.com/problems/produktsiffra
+TAGS: brute-force, combinatorics
+EXPLANATION: All that matters is the number of each digit, not their order
+* 				We can brute force every way to distrubute 15 digits among
+* 				10 possible options. We also need to account for every
+* 				possible way to make a number in the valid range with
+* 				the digits.
+* 

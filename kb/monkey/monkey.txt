@@ -1,0 +1,14 @@
+PROBLEM URL: https://open.kattis.com/problems/monkey
+TAGS:union-find
+EXPLANATION: If you wanted to carry all the smoothie to another location,
+* 				this would take ceiling(W/C) trips. However, once the weight
+* 				goes down, the number of trips reduces. 
+* 				Let t = ceiling(W/C). The smoothie removed is t*distance, 
+* 				so we can choose to move all the smoothie a certain distance, 
+* 				such that when we are done moving it, the remaining smoothie 
+* 				is the next multiple of C. 
+* 				We can keep doing this until the distance is short enough 
+* 				for us to just take as much smoothie as possible and move 
+* 				it to the end.
+* 
+* 				For the purposes of implementation, I represented W as k*C + r

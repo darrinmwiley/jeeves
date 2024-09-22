@@ -1,0 +1,6 @@
+PROBLEM URL: https://open.kattis.com/problems/quiteaproblem
+TAGS: implementation
+EXPLANATION:
+- Check each substring to see if it is "problem"
+- Edge cases: 
+    - There could be whitespace between paragraphs => print "no" if such line exists

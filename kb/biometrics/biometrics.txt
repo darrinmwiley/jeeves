@@ -1,0 +1,8 @@
+PROBLEM URL: https://open.kattis.com/problems/biometrics
+TAGS: geometry
+EXPLANATION:
+We can translate each polygon so the first vertex is at (0, 0). Then we just need to determine if the polygons can be
+scaled and rotated around the origin to each other. A fixed scale and rotation can be represented as a matrix. With the 
+second vertexes of the polygons, we can determine this matrix, and then check if this matrix transforms every vertex
+from the first polygon into the corresponding vertex in the second polygon
+

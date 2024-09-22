@@ -1,0 +1,5 @@
+PROBLEM URL: https://open.kattis.com/problems/robotprotection
+TAGS: convex hull, shoelace theorem
+EXPLANATION:
+Find convex hull of set of points with Graham Scan
+Use shoelace theorem to find area of the convex hull

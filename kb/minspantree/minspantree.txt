@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/minspantree
+TAGS: MST, DSU
+EXPLANATION:
+standard min spanning tree using Kruskal's algorithm and Union Find

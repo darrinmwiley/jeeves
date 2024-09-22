@@ -1,0 +1,15 @@
+PROBLEM URL: open.kattis.com/problems/euclidsgame
+TAGS: game, memo, dp, math
+EXPLANATION:
+
+for the case (a, b) where W.L.O.G a <= b, you know at some point the state of the problem must pass through (b%a, a).
+
+if (b%a, a) is a forced move (the case that b = a+b%a), then there is no choice and you must make that move
+
+Otherwise, you can choose to either take that game state yourself, or give it to your opponent.
+
+(a, b%a+a) = take state yourself, because the opponent is forced to give it to you
+(b%a, a) = give state to your opponent
+
+Under the same logic of Euclid's GCD algorithm, this will give a logarithmic number of subproblems to solve. I memoized to be safe.
+

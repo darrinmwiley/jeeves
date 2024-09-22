@@ -1,0 +1,4 @@
+PROBLEM URL: open.kattis.com/problems/parking2
+TAGS: easy, math, observation
+EXPLANATION:
+it doesn't matter where you start, you'll travel the entire range distance twice.

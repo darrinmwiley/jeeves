@@ -1,0 +1,5 @@
+PROBLEM URL: https://open.kattis.com/problems/dancerecital
+TAGS: brute-force
+EXPLANATION:
+ - Check through all possible permutation of the routines (all n! permutations) and keep track the number of quick change necessary
+ => With some pre-computation, the above can be done in O(n*(n!)), which is possible for n <= 10

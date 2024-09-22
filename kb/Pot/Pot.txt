@@ -1,0 +1,4 @@
+PROBLEM URL: https://open.kattis.com/problems/pot
+TAGS: math
+EXPLANATION:
+simple

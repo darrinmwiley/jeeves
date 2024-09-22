@@ -1,0 +1,15 @@
+PROBLEM URL: open.kattis.com/problems/reconnaissance
+TAGS: ternary search, binary search
+EXPLANATION:
+The distance between the farthest two cars is either monotonic or bitonic. In other words, one of these cases is true:
+
+1) distance never changes
+2) distance increases forever
+3) distance decreases, reaches a critical point, and then increases forever
+
+In any of these cases, you can use ternary search to find the critical point. 
+In case 1, it will be anywhere. 
+In case 2, it will be at T = 0
+In case 3, it will be at a single point.
+
+The implementation of the ternary search is very similar to binary search in this case, as you query a T and T+epsilon to see how the function is growing.

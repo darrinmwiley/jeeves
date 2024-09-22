@@ -1,0 +1,6 @@
+PROBLEM URL: https://open.kattis.com/problems/circularlock
+TAGS: math
+EXPLANATION: simplify the problem the way the problem statement describes
+* 				Using a system of equations with the number of times each button 
+* 				is pressed, it is possible if and only if the sum of the numbers on
+* 				both diagonals are equivalent mod p

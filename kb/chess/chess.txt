@@ -1,0 +1,9 @@
+PROBLEM URL: open.kattis.com/problems/chess
+TAGS: math, casework
+EXPLANATION:
+you can move from a to b if (r+c) or (r-c) are same
+for any square one of three cases is true
+1) impossible (r+c) are two different parity
+2) one move
+3) one intermediary move
+handle each case accordingly

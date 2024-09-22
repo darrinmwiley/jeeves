@@ -1,0 +1,10 @@
+PROBLEM URL: open.kattis.com/problems/railway
+TAGS: graph, bfs
+EXPLANATION:
+represent each (switch, letter, direction) as a vertex of a graph. 
+
+This will result in 6*N vertices and 4*N + 2*M edges
+
+After constructing the graph, find the shortest non-trivial path from 
+(1,A,outbound) to (1,A,outbound), and trace back through the path to determine
+each switch configuration.
